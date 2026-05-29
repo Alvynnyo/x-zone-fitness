@@ -85,15 +85,33 @@
 
 <!-- HERO -->
 <section class="hero" aria-label="Bannière principale">
-  <div class="hero-bg" aria-hidden="true"></div>
+  <img class="hero-image" src="images/hero.png" alt="" aria-hidden="true">
   <div class="hero-overlay" aria-hidden="true"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Coaching Personnel &middot; Montréal</div>
     <h1 class="hero-title" data-i18n="hero.title">TRANSFORMEZ VOTRE CORPS</h1>
-    <p class="hero-subtitle" data-i18n="hero.subtitle">Coaching sportif personnalisé à Montréal</p>
+    <ul class="hero-bullets" aria-label="Avantages du coaching">
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Coaching personnalisé à Montréal
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Programmes adaptés à vos objectifs
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Suivi motivant et résultats concrets
+      </li>
+    </ul>
     <div class="hero-ctas">
-      <a href="contact.html" class="btn btn-primary" data-i18n="hero.cta_primary">Commencer maintenant</a>
-      <a href="offres.html" class="btn btn-outline" data-i18n="hero.cta_secondary">Voir les programmes</a>
+      <a href="contact.html" class="btn btn-hero-primary" data-i18n="hero.cta_primary">Commencer maintenant</a>
+      <a href="offres.html" class="btn btn-hero-secondary" data-i18n="hero.cta_secondary">Voir les programmes</a>
     </div>
   </div>
 </section>
@@ -102,103 +120,18 @@
 <section class="stats-section" aria-label="Chiffres clés">
   <div class="container">
     <div class="stats-grid">
-      <div class="reveal">
+      <div class="stat-card reveal">
         <div class="stat-number" data-i18n="stats.clients_count">300+</div>
         <div class="stat-label" data-i18n="stats.clients_label">Clients transformés</div>
       </div>
-      <div class="reveal">
+      <div class="stat-card reveal">
         <div class="stat-number" data-i18n="stats.years_count">10+</div>
         <div class="stat-label" data-i18n="stats.years_label">Années d'expérience</div>
       </div>
-      <div class="reveal">
+      <div class="stat-card reveal">
         <div class="stat-number" data-i18n="stats.satisfaction_count">98%</div>
         <div class="stat-label" data-i18n="stats.satisfaction_label">Taux de satisfaction</div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROGRAMMES -->
-<section aria-labelledby="programs-title">
-  <div class="container">
-    <h2 class="section-title" id="programs-title" data-i18n="programs_section.title">NOS PROGRAMMES</h2>
-    <p class="section-subtitle" data-i18n="programs_section.subtitle">Des programmes adaptés à tous les objectifs</p>
-    <div class="programs-grid">
-
-      <div class="program-card reveal">
-        <div class="program-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
-            <polyline points="16 7 22 7 22 13"/>
-          </svg>
-        </div>
-        <h3 class="program-title" data-i18n="programs_section.transformation.title">Transformation</h3>
-        <p class="program-desc" data-i18n="programs_section.transformation.desc">Perdez du poids et sculptez votre corps avec un programme complet.</p>
-        <ul class="program-benefits" aria-label="Bénéfices">
-          <li data-i18n="programs_section.transformation.benefit1">Perte de poids ciblée</li>
-          <li data-i18n="programs_section.transformation.benefit2">Sculpture corporelle</li>
-          <li data-i18n="programs_section.transformation.benefit3">Nutrition adaptée</li>
-          <li data-i18n="programs_section.transformation.benefit4">Suivi hebdomadaire</li>
-          <li data-i18n="programs_section.transformation.benefit5">Résultats garantis</li>
-        </ul>
-        <a href="contact.html" class="btn btn-outline-green" data-i18n="programs_section.transformation.cta">En savoir plus</a>
-      </div>
-
-      <div class="program-card reveal">
-        <div class="program-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M6.5 6v12M17.5 6v12M4 9h2.5v6H4V9zM17.5 9H20v6h-2.5V9zM6.5 12h11"/>
-          </svg>
-        </div>
-        <h3 class="program-title" data-i18n="programs_section.strength.title">Force &amp; Masse</h3>
-        <p class="program-desc" data-i18n="programs_section.strength.desc">Développez votre masse musculaire et votre force avec des méthodes éprouvées.</p>
-        <ul class="program-benefits">
-          <li data-i18n="programs_section.strength.benefit1">Prise de masse qualitative</li>
-          <li data-i18n="programs_section.strength.benefit2">Force fonctionnelle</li>
-          <li data-i18n="programs_section.strength.benefit3">Programme périodisé</li>
-          <li data-i18n="programs_section.strength.benefit4">Technique parfaite</li>
-          <li data-i18n="programs_section.strength.benefit5">Progression constante</li>
-        </ul>
-        <a href="contact.html" class="btn btn-outline-green" data-i18n="programs_section.strength.cta">En savoir plus</a>
-      </div>
-
-      <div class="program-card reveal">
-        <div class="program-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-        </div>
-        <h3 class="program-title" data-i18n="programs_section.cardio.title">Cardio Intense</h3>
-        <p class="program-desc" data-i18n="programs_section.cardio.desc">Améliorez votre endurance et brûlez les graisses avec des sessions intenses.</p>
-        <ul class="program-benefits">
-          <li data-i18n="programs_section.cardio.benefit1">Endurance cardiovasculaire</li>
-          <li data-i18n="programs_section.cardio.benefit2">Brûlage de graisses optimal</li>
-          <li data-i18n="programs_section.cardio.benefit3">HIIT &amp; circuits</li>
-          <li data-i18n="programs_section.cardio.benefit4">Amélioration VO2 max</li>
-          <li data-i18n="programs_section.cardio.benefit5">Énergie décuplée</li>
-        </ul>
-        <a href="contact.html" class="btn btn-outline-green" data-i18n="programs_section.cardio.cta">En savoir plus</a>
-      </div>
-
-      <div class="program-card featured reveal">
-        <div class="program-badge" data-i18n="programs_section.custom.badge">Le plus populaire</div>
-        <div class="program-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-          </svg>
-        </div>
-        <h3 class="program-title" data-i18n="programs_section.custom.title">Sur Mesure</h3>
-        <p class="program-desc" data-i18n="programs_section.custom.desc">Un programme 100% personnalisé selon vos objectifs, votre niveau et votre emploi du temps.</p>
-        <ul class="program-benefits">
-          <li data-i18n="programs_section.custom.benefit1">Bilan initial complet</li>
-          <li data-i18n="programs_section.custom.benefit2">Programme 100% personnalisé</li>
-          <li data-i18n="programs_section.custom.benefit3">Suivi nutritionnel</li>
-          <li data-i18n="programs_section.custom.benefit4">Ajustements réguliers</li>
-          <li data-i18n="programs_section.custom.benefit5">Support illimité</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary" data-i18n="programs_section.custom.cta">En savoir plus</a>
-      </div>
-
     </div>
   </div>
 </section>
@@ -281,11 +214,13 @@
 </section>
 
 <!-- CTA FINAL -->
-<section class="cta-section reveal" aria-labelledby="cta-title">
+<section class="cta-section" aria-labelledby="cta-title">
   <div class="container">
-    <h2 class="cta-title" id="cta-title" data-i18n="cta_section.title">PRÊT À COMMENCER ?</h2>
-    <p class="cta-subtitle" data-i18n="cta_section.subtitle">Faites le premier pas vers la meilleure version de vous-même.</p>
-    <a href="contact.html" class="btn btn-white" data-i18n="cta_section.button">Contactez-nous maintenant</a>
+    <div class="cta-card reveal">
+      <h2 class="cta-title" id="cta-title" data-i18n="cta_section.title">PRÊT À COMMENCER ?</h2>
+      <p class="cta-subtitle" data-i18n="cta_section.subtitle">Faites le premier pas vers la meilleure version de vous-même.</p>
+      <a href="contact.html" class="btn btn-white" data-i18n="cta_section.button">Contactez-nous maintenant</a>
+    </div>
   </div>
 </section>
 
