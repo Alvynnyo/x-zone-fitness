@@ -123,23 +123,29 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.1; }
 .nav-links a:hover,
 .nav-links a.active { color: var(--color-primary); }
 
-/* Language switcher */
-.lang-switcher { display: flex; align-items: center; gap: 0.2rem; }
+/* Language switcher toggle */
+.lang-switcher {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 2px;
+}
 .lang-btn {
-  min-height: 36px;
-  padding: 0.2rem 0.5rem;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.5);
+  height: 30px;
+  padding: 0 0.65rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.45);
   background: transparent;
-  border: 1px solid transparent;
-  border-radius: 4px;
+  border: none;
+  border-radius: 18px;
   transition: var(--transition);
   font-family: var(--font-body);
+  letter-spacing: 0.5px;
 }
-.lang-btn:hover,
-.lang-btn.active { color: var(--color-white); border-color: rgba(255,255,255,0.4); }
-.lang-sep { color: rgba(255,255,255,0.3); font-size: 0.8rem; }
+.lang-btn.active { background: var(--color-primary); color: var(--color-white); }
+.lang-btn:hover:not(.active) { color: rgba(255,255,255,0.85); }
 
 /* Hamburger */
 .nav-hamburger {
@@ -186,9 +192,9 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.1; }
 .nav-overlay .nav-links a:hover,
 .nav-overlay .nav-links a.active { color: rgba(255,255,255,0.7); }
 .nav-overlay .nav-links a::after { display: none; }
-.nav-overlay .lang-switcher { margin-top: 0.5rem; }
+.nav-overlay .lang-switcher { margin-top: 0.5rem; border-color: rgba(255,255,255,0.4); }
 .nav-overlay .lang-btn { color: rgba(255,255,255,0.6); }
-.nav-overlay .lang-btn.active { color: var(--color-white); border-color: rgba(255,255,255,0.6); }
+.nav-overlay .lang-btn.active { background: rgba(255,255,255,0.2); color: var(--color-white); }
 .nav-overlay-close {
   position: absolute;
   top: 1rem;
