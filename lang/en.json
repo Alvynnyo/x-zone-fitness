@@ -198,5 +198,27 @@
     "social_title": "Social media",
     "copyright": "X-Zone Fitness. All rights reserved."
   },
-  "testimonialsTitle": "WHAT OUR CLIENTS SAY"
+  "testimonialsTitle": "WHAT OUR CLIENTS SAY",
+  "testimonials": [
+    {
+      "name": "Marie-Pier T.",
+      "result": "-18kg in 5 months",
+      "quote": "Ronald completely changed my relationship with sport. I never thought I could transform myself so much in such a short time."
+    },
+    {
+      "name": "Jean-François B.",
+      "result": "+12kg of muscle in 4 months",
+      "quote": "Serious program, constant follow-up and results delivered. I recommend without hesitation to anyone who wants to progress quickly."
+    },
+    {
+      "name": "Karine L.",
+      "result": "Complete transformation in 6 months",
+      "quote": "What impressed me most was the personalized follow-up. Ronald truly adapts to your level and your constraints."
+    },
+    {
+      "name": "Samuel G.",
+      "result": "-10kg and muscle gain",
+      "quote": "I had tried several coaches before Ronald. He is the only one who knew how to push me at the right moment without ever discouraging me."
+    }
+  ]
 }

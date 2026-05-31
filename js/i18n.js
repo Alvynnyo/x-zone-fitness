@@ -35,6 +35,7 @@ async function setLang(lang) {
   await loadTranslations(lang);
   applyTranslations();
   updateButtons(lang);
+  document.dispatchEvent(new CustomEvent('i18n:updated'));
 }
 
 async function initI18n() {
@@ -45,6 +46,7 @@ async function initI18n() {
   document.querySelectorAll('.lang-btn').forEach(btn =>
     btn.addEventListener('click', () => setLang(btn.dataset.lang))
   );
+  document.dispatchEvent(new CustomEvent('i18n:updated'));
 }
 
 document.addEventListener('DOMContentLoaded', initI18n);

@@ -50,33 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Testimonials carousel
-  const testimonials = [
-    {
-      name: "Marie-Pier T.",
-      result: "-18kg en 5 mois",
-      quote: "Ronald a complètement changé mon rapport au sport. Je n'aurais jamais cru pouvoir me transformer autant en si peu de temps.",
-      avatar: "images/avatar-01.jpg"
-    },
-    {
-      name: "Jean-François B.",
-      result: "+12kg de masse en 4 mois",
-      quote: "Programme sérieux, suivi constant et résultats au rendez-vous. Je recommande sans hésiter à quiconque veut progresser rapidement.",
-      avatar: "images/avatar-02.jpg"
-    },
-    {
-      name: "Karine L.",
-      result: "Transformation complète en 6 mois",
-      quote: "Ce qui m'a le plus marquée c'est le suivi personnalisé. Ronald s'adapte vraiment à ton niveau et à tes contraintes.",
-      avatar: "images/avatar-03.jpg"
-    },
-    {
-      name: "Samuel G.",
-      result: "-10kg et prise de masse",
-      quote: "J'avais essayé plusieurs coachs avant Ronald. C'est le seul qui a su me pousser au bon moment sans jamais me décourager.",
-      avatar: "images/avatar-04.jpg"
-    },
-  ];
-
   function getInitials(name) {
     const parts = name.replace(/\./g, '').trim().split(/\s+/);
     if (!parts[0]) return '?';
@@ -95,28 +68,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('testimonials-next');
     if (!stage || !dotsContainer) return;
 
-    const total = testimonials.length;
     let current = 0;
     let autoplayTimer = null;
 
-    testimonials.forEach((t, i) => {
-      const card = document.createElement('div');
-      card.className = 'tc-card';
-      card.dataset.index = i;
-      card.innerHTML = `<div class="tc-avatar">${makeAvatarSVG(t.name)}</div><div class="tc-name">${t.name}</div><div class="tc-result">${t.result}</div><p class="tc-quote">${t.quote}</p>`;
-      stage.appendChild(card);
-    });
-
-    for (let i = 0; i < total; i++) {
-      const dot = document.createElement('button');
-      dot.className = 'tc-dot' + (i === 0 ? ' active' : '');
-      dot.setAttribute('aria-label', `Témoignage ${i + 1}`);
-      dot.addEventListener('click', () => goTo(i, true));
-      dotsContainer.appendChild(dot);
-    }
-
     function updatePositions() {
       const cards = stage.querySelectorAll('.tc-card');
+      const total = cards.length;
+      if (!total) return;
       cards.forEach((card, i) => {
         card.classList.remove('tc-card--center', 'tc-card--left', 'tc-card--right', 'tc-card--hidden');
         const offset = ((i - current) % total + total) % total;
@@ -134,10 +92,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function goTo(idx, stop) {
+      const total = stage.querySelectorAll('.tc-card').length;
+      if (!total) return;
       current = ((idx % total) + total) % total;
       if (stop) { clearInterval(autoplayTimer); autoplayTimer = null; }
       updatePositions();
       updateDots();
+    }
+
+    function buildCards() {
+      const data = getVal('testimonials');
+      if (!data || !data.length) return;
+      const total = data.length;
+      if (current >= total) current = 0;
+      stage.innerHTML = '';
+      dotsContainer.innerHTML = '';
+      data.forEach((t, i) => {
+        const card = document.createElement('div');
+        card.className = 'tc-card';
+        card.dataset.index = i;
+        card.innerHTML = `<div class="tc-avatar">${makeAvatarSVG(t.name)}</div><div class="tc-name">${t.name}</div><div class="tc-result">${t.result}</div><p class="tc-quote">${t.quote}</p>`;
+        stage.appendChild(card);
+      });
+      for (let i = 0; i < total; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'tc-dot' + (i === current ? ' active' : '');
+        dot.setAttribute('aria-label', `Témoignage ${i + 1}`);
+        dot.addEventListener('click', () => goTo(i, true));
+        dotsContainer.appendChild(dot);
+      }
+      updatePositions();
+      if (!autoplayTimer) autoplayTimer = setInterval(() => goTo(current + 1, false), 5000);
     }
 
     stage.addEventListener('click', e => {
@@ -163,8 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (Math.abs(d) > 50) d > 0 ? goTo(current + 1, true) : goTo(current - 1, true);
     }, { passive: true });
 
-    autoplayTimer = setInterval(() => goTo(current + 1, false), 5000);
-    updatePositions();
+    document.addEventListener('i18n:updated', buildCards);
   }
 
   initTestimonialsCarousel();
