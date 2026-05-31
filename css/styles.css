@@ -1019,8 +1019,6 @@ h1, h2, h3 { font-family: var(--font-heading); line-height: 1.1; }
 .reassurance-grid .reveal:nth-child(2) { transition-delay: 0.08s; }
 .reassurance-grid .reveal:nth-child(3) { transition-delay: 0.16s; }
 .reassurance-grid .reveal:nth-child(4) { transition-delay: 0.24s; }
-.testimonials-grid .reveal:nth-child(2) { transition-delay: 0.1s; }
-.testimonials-grid .reveal:nth-child(3) { transition-delay: 0.2s; }
 
 /* Hero eyebrow label */
 .hero-eyebrow {
