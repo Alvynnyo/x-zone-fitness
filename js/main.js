@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function getInitials(name) {
     const parts = name.replace(/\./g, '').trim().split(/\s+/);
+    if (!parts[0]) return '?';
     return (parts[0][0] + (parts[parts.length - 1][0] || '')).toUpperCase();
   }
 
@@ -150,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
     nextBtn?.addEventListener('click', () => goTo(current + 1, true));
 
     document.addEventListener('keydown', e => {
+      if (document.querySelector('.lightbox.open')) return;
       if (e.key === 'ArrowLeft') goTo(current - 1, true);
       if (e.key === 'ArrowRight') goTo(current + 1, true);
     });
