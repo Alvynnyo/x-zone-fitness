@@ -7,12 +7,12 @@
   },
   "hero": {
     "title": "TRANSFORM YOUR BODY",
-    "subtitle": "Personalized fitness coaching in Montréal",
-    "cta_primary": "Start now",
+    "subtitle": "Personalized sports coaching in Montreal and surrounding areas",
+    "cta_primary": "Get started now",
     "cta_secondary": "See programs",
-    "bullet1": "Personalized coaching in Montréal",
-    "bullet2": "Programs tailored to your goals",
-    "bullet3": "Motivating follow-up and concrete results"
+    "bullet1": "10 years of coaching experience in Montreal",
+    "bullet2": "Programs adapted to your goals",
+    "bullet3": "Ongoing support and concrete results"
   },
   "stats": {
     "clients_count": "300+",
@@ -72,9 +72,9 @@
     }
   },
   "about": {
-    "title": "ABOUT RONALD",
-    "text1": "Certified fitness coach with over 10 years of experience in Montréal, Ronald has guided 300+ clients toward their body transformation goals.",
-    "text2": "His philosophy: every body is unique. No one-size-fits-all approach — only custom programs, rigorous follow-up, and constant motivation.",
+    "title": "ABOUT SAMUEL",
+    "text1": "A certified personal trainer with over 10 years of experience in Montreal, Samuel has guided more than 300 clients toward their physical transformation goals.",
+    "text2": "His philosophy: every body is unique. No universal method — only tailored programs, rigorous follow-up and constant motivation.",
     "cta": "Contact me"
   },
   "testimonials": {
@@ -163,14 +163,14 @@
   },
   "contact": {
     "hero_title": "CONTACT US",
-    "hero_subtitle": "Ready to start? Ronald responds within 24 hours.",
+    "hero_subtitle": "Ready to start? Samuel will get back to you within 48 hours.",
     "info_title": "CONTACT INFO",
     "email_label": "Email",
-    "email_value": "contact@xzonefitness.ca",
+    "email_value": "Samcrotv@hotmail.com",
     "phone_label": "Phone",
-    "phone_value": "+1 (514) 000-0000",
+    "phone_value": "+1 (438) 600-1894",
     "location_label": "Location",
-    "location_value": "Montréal, Québec, Canada",
+    "location_value": "Montreal and surrounding areas",
     "social_title": "Follow us",
     "form_title": "SEND A MESSAGE",
     "name_label": "Full name",
@@ -178,7 +178,7 @@
     "email_field_label": "Email address",
     "email_field_placeholder": "your@email.com",
     "phone_field_label": "Phone (optional)",
-    "phone_field_placeholder": "+1 (514) 000-0000",
+    "phone_field_placeholder": "+1 (438) 600-1894",
     "program_label": "Program of interest",
     "program_default": "Choose a program",
     "program_transformation": "Transformation",
@@ -189,11 +189,11 @@
     "message_placeholder": "Tell me about your goals...",
     "submit": "Send message",
     "sending": "Sending...",
-    "success": "Message sent! Ronald will reply within 24 hours.",
+    "success": "Thank you! I will get back to you within 48 hours.",
     "error": "An error occurred. Please try again or send an email directly."
   },
   "footer": {
-    "tagline": "Personalized fitness coaching in Montréal",
+    "tagline": "Professional sports coaching — Montreal, QC and surrounding areas",
     "nav_title": "Navigation",
     "social_title": "Social media",
     "copyright": "X-Zone Fitness. All rights reserved."

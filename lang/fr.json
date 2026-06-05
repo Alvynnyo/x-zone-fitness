@@ -7,12 +7,12 @@
   },
   "hero": {
     "title": "TRANSFORMEZ VOTRE CORPS",
-    "subtitle": "Coaching sportif personnalisé à Montréal",
-    "cta_primary": "Commencer maintenant",
+    "subtitle": "Coaching sportif personnalisé à Montréal et environs",
+    "cta_primary": "Débutez maintenant",
     "cta_secondary": "Voir les programmes",
-    "bullet1": "Coaching personnalisé à Montréal",
+    "bullet1": "10 ans d'expérience en coaching à Montréal",
     "bullet2": "Programmes adaptés à vos objectifs",
-    "bullet3": "Suivi motivant et résultats concrets"
+    "bullet3": "Suivi récurrent et résultats concrets"
   },
   "stats": {
     "clients_count": "300+",
@@ -72,8 +72,8 @@
     }
   },
   "about": {
-    "title": "À PROPOS DE RONALD",
-    "text1": "Coach sportif certifié avec plus de 10 ans d'expérience à Montréal, Ronald a accompagné plus de 300 clients vers leurs objectifs de transformation physique.",
+    "title": "À PROPOS DE SAMUEL",
+    "text1": "Coach sportif certifié avec plus de 10 ans d'expérience à Montréal, Samuel a accompagné plus de 300 clients vers leurs objectifs de transformation physique.",
     "text2": "Sa philosophie : chaque corps est unique. Pas de méthode universelle — uniquement des programmes sur mesure, un suivi rigoureux et une motivation constante.",
     "cta": "Me contacter"
   },
@@ -163,14 +163,14 @@
   },
   "contact": {
     "hero_title": "CONTACTEZ-NOUS",
-    "hero_subtitle": "Prêt à commencer ? Ronald vous répond sous 24h.",
+    "hero_subtitle": "Prêt à commencer ? Samuel vous répond sous 48h.",
     "info_title": "COORDONNÉES",
     "email_label": "Email",
-    "email_value": "contact@xzonefitness.ca",
+    "email_value": "Samcrotv@hotmail.com",
     "phone_label": "Téléphone",
-    "phone_value": "+1 (514) 000-0000",
+    "phone_value": "+1 (438) 600-1894",
     "location_label": "Localisation",
-    "location_value": "Montréal, Québec, Canada",
+    "location_value": "Montréal et les environs",
     "social_title": "Suivez-nous",
     "form_title": "ENVOYEZ UN MESSAGE",
     "name_label": "Nom complet",
@@ -178,7 +178,7 @@
     "email_field_label": "Adresse email",
     "email_field_placeholder": "votre@email.com",
     "phone_field_label": "Téléphone (optionnel)",
-    "phone_field_placeholder": "+1 (514) 000-0000",
+    "phone_field_placeholder": "+1 (438) 600-1894",
     "program_label": "Programme d'intérêt",
     "program_default": "Choisissez un programme",
     "program_transformation": "Transformation",
@@ -189,11 +189,11 @@
     "message_placeholder": "Parlez-moi de vos objectifs...",
     "submit": "Envoyer le message",
     "sending": "Envoi en cours...",
-    "success": "Message envoyé ! Ronald vous répondra sous 24h.",
+    "success": "Merci ! Je vous répondrai dans les 48h.",
     "error": "Une erreur est survenue. Veuillez réessayer ou envoyer un email directement."
   },
   "footer": {
-    "tagline": "Coaching sportif personnalisé à Montréal",
+    "tagline": "Coaching sportif professionnel — Montréal, QC et environs",
     "nav_title": "Navigation",
     "social_title": "Réseaux sociaux",
     "copyright": "X-Zone Fitness. Tous droits réservés."
