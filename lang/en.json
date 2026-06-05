@@ -220,5 +220,32 @@
       "result": "-10kg and muscle gain",
       "quote": "I had tried several coaches before Ronald. He is the only one who knew how to push me at the right moment without ever discouraging me."
     }
-  ]
+  ],
+  "coachName": "Samuel",
+  "brandName": "X-Zone Fitness",
+  "tagline": "Transform your body, Exceed your limits",
+  "email": "Samcrotv@hotmail.com",
+  "phone": "+1 (438) 600-1894",
+  "location": "Montreal and surrounding areas",
+  "heroTitle": "TRANSFORM YOUR BODY",
+  "heroSubtitle": "Personalized sports coaching in Montreal and surrounding areas",
+  "heroBullet1": "10 years of coaching experience in Montreal",
+  "heroBullet2": "Programs adapted to your goals",
+  "heroBullet3": "Ongoing support and concrete results",
+  "heroCta1": "Get started now",
+  "heroCta2": "See programs",
+  "stat1Number": "300+",
+  "stat1Label": "Clients transformed",
+  "stat2Number": "10+",
+  "stat2Label": "Years of experience",
+  "stat3Number": "98%",
+  "stat3Label": "Satisfaction rate",
+  "aboutTitleMain": "About",
+  "aboutTitleHighlight": "Your Coach",
+  "aboutPara1": "A certified personal trainer with over 10 years of experience in Montreal, Samuel has guided more than 300 clients toward their physical transformation goals.",
+  "aboutPara2": "His philosophy: every body is unique. No universal method — only tailored programs, rigorous follow-up and constant motivation.",
+  "aboutCta": "Contact me",
+  "formSuccess": "Thank you! I will get back to you within 48 hours.",
+  "footerTagline": "Professional sports coaching — Montreal, QC and surrounding areas",
+  "footerCopyright": "All rights reserved."
 }
