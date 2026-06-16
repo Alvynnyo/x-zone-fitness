@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const submitBtn = form.querySelector('.form-submit');
   const msgEl = document.getElementById('form-message');
+  const successEl = document.getElementById('formSuccess');
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
@@ -41,9 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({ name, email, phone, program, message })
       });
       if (!res.ok) throw new Error('API error');
-      msgEl.textContent = 'Message envoyé ! Ronald vous répondra sous 24h.';
-      msgEl.className = 'form-message success';
       form.reset();
+      if (successEl) successEl.style.display = 'block';
     } catch {
       msgEl.textContent = 'Une erreur est survenue. Veuillez réessayer ou envoyer un email directement.';
       msgEl.className = 'form-message error';
