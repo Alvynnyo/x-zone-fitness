@@ -3,14 +3,20 @@ const DEFAULT_LANG = 'fr';
 
 let translations = {};
 
-async function loadTranslations(lang) {
+async function loadTranslations(lang, allowDefaultFallback = true) {
   try {
     const res = await fetch(`lang/${lang}.json`);
-    if (!res.ok) throw new Error('fetch failed');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
     translations = await res.json();
-  } catch {
-    console.warn(`i18n: impossible de charger ${lang}.json, conservation du HTML existant.`);
-    return;
+    return lang;
+  } catch (error) {
+    console.error('Impossible de charger les traductions:', error);
+
+    if (allowDefaultFallback && lang !== DEFAULT_LANG) {
+      return loadTranslations(DEFAULT_LANG, false);
+    }
+
+    return null;
   }
 }
 
@@ -37,22 +43,26 @@ function updateButtons(lang) {
 }
 
 async function setLang(lang) {
-  localStorage.setItem(STORAGE_KEY, lang);
-  await loadTranslations(lang);
+  const resolvedLang = await loadTranslations(lang);
+  if (resolvedLang) localStorage.setItem(STORAGE_KEY, resolvedLang);
   applyTranslations();
-  updateButtons(lang);
+  updateButtons(resolvedLang || lang);
   document.dispatchEvent(new CustomEvent('i18n:updated'));
 }
 
 async function initI18n() {
   const lang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
-  await loadTranslations(lang);
+  const resolvedLang = await loadTranslations(lang);
+  if (resolvedLang) localStorage.setItem(STORAGE_KEY, resolvedLang);
   applyTranslations();
-  updateButtons(lang);
+  updateButtons(resolvedLang || lang);
   document.querySelectorAll('.lang-btn').forEach(btn =>
     btn.addEventListener('click', () => setLang(btn.dataset.lang))
   );
   document.dispatchEvent(new CustomEvent('i18n:updated'));
 }
+
+// API publique : même logique de résolution de clé que data-i18n (getVal), exposée sans duplication.
+window.i18n = { t: getVal };
 
 document.addEventListener('DOMContentLoaded', initI18n);

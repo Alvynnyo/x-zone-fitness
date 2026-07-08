@@ -14,6 +14,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -54,7 +55,7 @@
       <button onclick="switchLang('fr')" id="btnFr" class="lang-btn active" data-lang="fr">FR</button>
       <button onclick="switchLang('en')" id="btnEn" class="lang-btn" data-lang="en">EN</button>
     </div>
-    <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+    <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -87,6 +88,36 @@
   </div>
 </section>
 
+<section class="programs-showcase" aria-label="Nos formats de coaching">
+  <p class="programs-eyebrow" data-i18n="programsEyebrow">Trouve ton</p>
+  <h2 class="programs-title" id="programs-title" data-i18n-dynamic="programsTitle">PRISE DE MASSE</h2>
+
+  <div class="programs-tabs" role="tablist" aria-label="Choix du format">
+    <button class="programs-tab is-active" role="tab" aria-selected="true" data-program="masse" data-i18n="programMasseLabel">PRISE DE MASSE</button>
+    <button class="programs-tab" role="tab" aria-selected="false" data-program="perte" data-i18n="programPerteLabel">PERTE DE POIDS</button>
+    <button class="programs-tab" role="tab" aria-selected="false" data-program="perso" data-i18n="programPersoLabel">PERSONNALISE</button>
+  </div>
+
+  <div class="programs-content">
+    <div class="programs-text">
+      <p class="programs-text-title" data-i18n-dynamic="programsTextTitle">Prise de masse</p>
+      <p class="programs-text-desc" data-i18n-dynamic="programsTextDesc">Construire du muscle, solidement. Un programme structuré pour progresser sans te blesser.</p>
+    </div>
+    <div class="programs-visual-wrap">
+      <div class="programs-glow" aria-hidden="true"></div>
+      <div class="programs-shadow" aria-hidden="true"></div>
+      <div class="programs-visual" id="programs-visual">
+        <img src="images/icon-dumbbell.webp" alt="" aria-hidden="true" class="programs-icon">
+      </div>
+    </div>
+    <ul class="programs-benefits" aria-live="polite">
+      <li><span class="programs-dot" aria-hidden="true"></span><span data-i18n-dynamic="programsBenefit1">Volume et charge progressifs</span></li>
+      <li><span class="programs-dot" aria-hidden="true"></span><span data-i18n-dynamic="programsBenefit2">Suivi nutritionnel adapté</span></li>
+      <li><span class="programs-dot" aria-hidden="true"></span><span data-i18n-dynamic="programsBenefit3">Technique et prévention blessure</span></li>
+    </ul>
+  </div>
+</section>
+
 <!-- COACH -->
 <section id="coach">
   <div id="coach-eyebrow">
@@ -106,14 +137,6 @@
     </div>
   </div>
 
-  <div id="coach-mission">
-    <div id="coach-mission-label" data-i18n="coachMissionLabel">SA PHILOSOPHIE</div>
-    <div id="coach-mission-statement">
-      <span id="coach-mission-highlight" data-i18n="coachMissionHighlight">Toi vs Toi.</span>
-      <p id="coach-mission-text" data-i18n="coachSub">Coach certifié. 10 ans d'expérience.<br>300+ clients transformés à Montréal.</p>
-    </div>
-    <button id="coach-cta" onclick="openContactPopup()" data-i18n="coachCta">Travaillons ensemble</button>
-  </div>
 </section>
 
 <!-- VIDÉOS -->

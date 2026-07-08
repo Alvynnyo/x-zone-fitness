@@ -1,5 +1,38 @@
 const videos = [];
 
+const programsData = {
+  masse: {
+    title: 'PRISE DE MASSE',
+    titleKey: 'programMasseLabel',
+    textTitle: 'Prise de masse',
+    textTitleKey: 'programMasseTextTitle',
+    desc: 'Construire du muscle, solidement. Un programme structuré pour progresser sans te blesser.',
+    descKey: 'programMasseDesc',
+    benefits: ['Volume et charge progressifs', 'Suivi nutritionnel adapté', 'Technique et prévention blessure'],
+    benefitKeys: ['programMasseBenefit1', 'programMasseBenefit2', 'programMasseBenefit3']
+  },
+  perte: {
+    title: 'PERTE DE POIDS',
+    titleKey: 'programPerteLabel',
+    textTitle: 'Perte de poids',
+    textTitleKey: 'programPerteTextTitle',
+    desc: 'Perdre du gras, garder le muscle. Un plan réaliste, sans privation extrême.',
+    descKey: 'programPerteDesc',
+    benefits: ['Déficit calorique maîtrisé', 'Combinaison force et cardio', 'Suivi de la composition corporelle'],
+    benefitKeys: ['programPerteBenefit1', 'programPerteBenefit2', 'programPerteBenefit3']
+  },
+  perso: {
+    title: 'PERSONNALISE',
+    titleKey: 'programPersoLabel',
+    textTitle: 'Personnalisé',
+    textTitleKey: 'programPersoTextTitle',
+    desc: 'Ton objectif ne rentre dans aucune case. On construit le programme autour de toi.',
+    descKey: 'programPersoDesc',
+    benefits: ['Bilan initial complet', 'Programme évolutif', 'Ajustements réguliers avec le coach'],
+    benefitKeys: ['programPersoBenefit1', 'programPersoBenefit2', 'programPersoBenefit3']
+  }
+};
+
 function refreshBodyLock() {
   const locked =
     document.getElementById('mobile-menu')?.classList.contains('active') ||
@@ -116,6 +149,74 @@ function updateHeroNavOnScroll() {
   updateActiveNavLink();
 }
 
+function getProgramText(item, keyName, fallbackName) {
+  const key = item[keyName];
+  return (key && window.i18n?.t(key)) || item[fallbackName];
+}
+
+function renderProgram(programId) {
+  const data = programsData[programId] || programsData.masse;
+  const title = document.getElementById('programs-title');
+  const textTitle = document.querySelector('.programs-text-title');
+  const desc = document.querySelector('.programs-text-desc');
+  const benefitEls = document.querySelectorAll('.programs-benefits [data-i18n-dynamic]');
+
+  if (title) title.textContent = getProgramText(data, 'titleKey', 'title');
+  if (textTitle) textTitle.textContent = getProgramText(data, 'textTitleKey', 'textTitle');
+  if (desc) desc.textContent = getProgramText(data, 'descKey', 'desc');
+
+  benefitEls.forEach((el, index) => {
+    const key = data.benefitKeys[index];
+    el.textContent = (key && window.i18n?.t(key)) || data.benefits[index] || '';
+  });
+}
+
+function setActiveProgram(programId) {
+  document.querySelectorAll('.programs-tab').forEach(tab => {
+    const isActive = tab.dataset.program === programId;
+    tab.classList.toggle('is-active', isActive);
+    tab.setAttribute('aria-selected', String(isActive));
+  });
+
+  renderProgram(programId);
+}
+
+function initProgramsShowcase() {
+  const tabs = document.querySelectorAll('.programs-tab');
+  if (!tabs.length) return;
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => setActiveProgram(tab.dataset.program || 'masse'));
+  });
+
+  const activeTab = document.querySelector('.programs-tab.is-active') || tabs[0];
+  setActiveProgram(activeTab.dataset.program || 'masse');
+}
+
+function initProgramsVisualTilt() {
+  const programsVisualWrap = document.querySelector('.programs-visual-wrap');
+  const programsVisual = document.getElementById('programs-visual');
+  const canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  const hasTouch = navigator.maxTouchPoints > 0 || window.matchMedia('(pointer: coarse)').matches;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!programsVisualWrap || !programsVisual || !canHover || hasTouch || reduceMotion) return;
+
+  programsVisualWrap.addEventListener('mousemove', event => {
+    const rect = programsVisualWrap.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+    programsVisual.style.animation = 'none';
+    programsVisual.style.transform = `perspective(600px) rotateY(${x * 20}deg) rotateX(${y * -20}deg)`;
+  });
+
+  programsVisualWrap.addEventListener('mouseleave', () => {
+    programsVisual.style.animation = 'programsFloat 4.5s ease-in-out infinite';
+    programsVisual.style.transform = 'translateY(0px)';
+  });
+}
+
 Object.assign(window, {
   switchLang,
   toggleMobileMenu,
@@ -160,6 +261,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  initProgramsShowcase();
+  initProgramsVisualTilt();
+
   document.querySelectorAll('.video-tab').forEach(tab => {
     tab.addEventListener('click', function() {
       document.querySelectorAll('.video-tab').forEach(item => item.classList.remove('active'));
@@ -168,6 +272,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   renderVideos();
+
+  // Re-rend le message vidéos au chargement i18n initial et à chaque changement de langue.
+  document.addEventListener('i18n:updated', () => {
+    renderVideos();
+    const activeProgram = document.querySelector('.programs-tab.is-active')?.dataset.program || 'masse';
+    renderProgram(activeProgram);
+  });
 
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
