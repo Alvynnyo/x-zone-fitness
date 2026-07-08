@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page introuvable — X-Zone Fitness</title>
+  <meta name="description" content="La page demandée est introuvable. Retournez vers X-Zone Fitness.">
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body {
+      min-height: 100vh;
+      background: #0a0a0a;
+      color: white;
+    }
+
+    #not-found {
+      min-height: calc(100vh - 96px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px 40px 80px;
+      background: #0a0a0a;
+    }
+
+    #not-found-inner {
+      max-width: 760px;
+    }
+
+    #not-found-code {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.35);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    #not-found-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 12vw, 160px);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: white;
+      margin-bottom: 28px;
+    }
+
+    #not-found-text {
+      max-width: 520px;
+      font-size: clamp(16px, 2vw, 20px);
+      line-height: 1.6;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 36px;
+    }
+
+    #not-found-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 14px 28px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+    }
+
+    #not-found-link:hover {
+      background: white;
+      color: #0a0a0a;
+      border-color: white;
+    }
+
+    @media (max-width: 768px) {
+      #not-found {
+        padding: 120px 20px 64px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav id="hero-nav">
+    <a href="index.html" id="hero-logo">X-ZONE FITNESS</a>
+    <ul id="hero-links">
+      <li><a href="index.html#coach">Coach</a></li>
+      <li><a href="index.html#videos">Vidéos</a></li>
+      <li><a href="galerie.html">Galerie</a></li>
+      <li><a href="index.html#contact-popup">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main id="not-found">
+    <div id="not-found-inner">
+      <div id="not-found-code">Erreur 404</div>
+      <h1 id="not-found-title">Page introuvable</h1>
+      <p id="not-found-text">La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil pour continuer.</p>
+      <a id="not-found-link" href="index.html">Retour à l'accueil</a>
+    </div>
+  </main>
+
+  <footer id="site-footer">
+    <span id="footer-brand">X-ZONE FITNESS</span>
+    <span id="footer-copy">© <span id="footer-year"></span> — Tous droits réservés.</span>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

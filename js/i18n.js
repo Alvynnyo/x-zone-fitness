@@ -4,8 +4,14 @@ const DEFAULT_LANG = 'fr';
 let translations = {};
 
 async function loadTranslations(lang) {
-  const res = await fetch(`lang/${lang}.json`);
-  translations = await res.json();
+  try {
+    const res = await fetch(`lang/${lang}.json`);
+    if (!res.ok) throw new Error('fetch failed');
+    translations = await res.json();
+  } catch {
+    console.warn(`i18n: impossible de charger ${lang}.json, conservation du HTML existant.`);
+    return;
+  }
 }
 
 function getVal(keyPath) {

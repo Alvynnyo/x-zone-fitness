@@ -8,7 +8,7 @@
   <link rel="canonical" href="https://xzonefitness.ca/">
   <meta property="og:title" content="X-Zone Fitness | Coach Sportif Personnalisé à Montréal">
   <meta property="og:description" content="Transformez votre corps avec Ronald, coach sportif certifié à Montréal. 300+ clients, 10 ans d'expérience, 98% de satisfaction.">
-  <meta property="og:image" content="https://xzonefitness.ca/images/og-image.jpg">
+  <meta property="og:image" content="images/hero-flatlay.jpg">
   <meta property="og:url" content="https://xzonefitness.ca/">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,194 +38,247 @@
 </head>
 <body>
 
-<!-- NAVIGATION -->
-<nav class="nav" role="navigation" aria-label="Navigation principale">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo" aria-label="X-Zone Fitness — Accueil">
-      <svg viewBox="0 0 28 28" fill="none" aria-hidden="true">
-        <circle cx="14" cy="14" r="13" stroke="#005400" stroke-width="2"/>
-        <path d="M8 20 L12 14 L10 8 M20 8 L16 14 L18 20 M10 14 L18 14" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      X-ZONE FITNESS
-    </a>
-    <div class="nav-menu">
-      <ul class="nav-links" role="list">
-        <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
-        <li><a href="offres.html" data-i18n="nav.programs">Programmes</a></li>
-        <li><a href="galerie.html" data-i18n="nav.gallery">Galerie</a></li>
-        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-      </ul>
-      <div class="lang-switcher" aria-label="Changer de langue">
-        <button class="lang-btn active" data-lang="fr" aria-label="Français">FR</button>
+<!-- HERO -->
+<section id="hero">
+  <div id="hero-bg"></div>
 
-        <button class="lang-btn" data-lang="en" aria-label="English">EN</button>
-      </div>
+  <nav id="hero-nav">
+    <div id="hero-logo">X-ZONE FITNESS</div>
+    <ul id="hero-links">
+      <li><a href="#coach" data-i18n="navCoach">Coach</a></li>
+      <li><a href="#videos" data-i18n="navVideos">Vidéos</a></li>
+      <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
+      <li><a href="#contact-popup" id="nav-contact" onclick="openContactPopup(); return false;" data-i18n="navContact">Contact</a></li>
+    </ul>
+    <div id="hero-lang">
+      <button onclick="switchLang('fr')" id="btnFr" class="lang-btn active" data-lang="fr">FR</button>
+      <button onclick="switchLang('en')" id="btnEn" class="lang-btn" data-lang="en">EN</button>
     </div>
-    <button class="nav-hamburger" aria-label="Ouvrir le menu" aria-expanded="false">
+    <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-  </div>
-</nav>
+  </nav>
 
-<!-- MOBILE OVERLAY -->
-<div class="nav-overlay" role="dialog" aria-modal="true" aria-label="Menu mobile">
-  <button class="nav-overlay-close" aria-label="Fermer le menu">✕</button>
-  <ul class="nav-links" role="list">
-    <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
-    <li><a href="offres.html" data-i18n="nav.programs">Programmes</a></li>
-    <li><a href="galerie.html" data-i18n="nav.gallery">Galerie</a></li>
-    <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-  </ul>
-  <div class="lang-switcher">
-    <button class="lang-btn active" data-lang="fr">FR</button>
-    <span class="lang-sep" aria-hidden="true">|</span>
-    <button class="lang-btn" data-lang="en">EN</button>
+  <div id="hero-tagline" data-i18n="heroTagline">COACHING PERSONNEL · MONTRÉAL</div>
+
+  <h1 id="hero-title">X-ZONE<br>FITNESS</h1>
+
+  <div id="hero-block-left">
+    <p data-i18n="heroBlockLeft">Coach certifié.<br>+10 ans d'expérience.<br>300+ clients transformés.</p>
+  </div>
+
+  <div id="hero-block-right">
+    <p data-i18n="heroBlockRight">Chaque corps est unique.<br>Chaque programme aussi.</p>
+  </div>
+
+  <div id="hero-video-thumb" onclick="openVideoPopup()">
+    <div id="hero-video-img">
+      <img src="images/hero-flatlay.jpg" alt="Samuel — Coach X-Zone Fitness">
+    </div>
+    <div id="hero-video-label">
+      <span id="play-icon">&#9654;</span>
+      <span data-i18n="heroVideoLabel">SAMUEL</span>
+    </div>
+  </div>
+
+  <div id="hero-scroll">
+    <span>&#8964;</span>
+    <span data-i18n="heroScroll">SCROLL TO CONTINUE</span>
+  </div>
+</section>
+
+<!-- COACH -->
+<section id="coach">
+  <div id="coach-eyebrow">
+    <span id="coach-eyebrow-label" data-i18n="coachLabel">VOTRE COACH</span>
+  </div>
+
+  <div id="coach-statement">
+    <h2 id="coach-statement-text" data-i18n="coachStatement">Chaque corps est unique.<br>Chaque programme aussi.</h2>
+  </div>
+
+  <div id="coach-media-grid">
+    <div class="coach-media-large">
+      <img src="images/placeholder-coach.jpg" alt="Samuel — Coach X-Zone Fitness" loading="lazy">
+    </div>
+    <div class="coach-media-small">
+      <img src="images/placeholder-coach.jpg" alt="Samuel en coaching" loading="lazy">
+    </div>
+  </div>
+
+  <div id="coach-mission">
+    <div id="coach-mission-label" data-i18n="coachMissionLabel">SA PHILOSOPHIE</div>
+    <div id="coach-mission-statement">
+      <span id="coach-mission-highlight" data-i18n="coachMissionHighlight">Toi vs Toi.</span>
+      <p id="coach-mission-text" data-i18n="coachSub">Coach certifié. 10 ans d'expérience.<br>300+ clients transformés à Montréal.</p>
+    </div>
+    <button id="coach-cta" onclick="openContactPopup()" data-i18n="coachCta">Travaillons ensemble</button>
+  </div>
+</section>
+
+<!-- VIDÉOS -->
+<section id="videos">
+  <div id="videos-header">
+    <div id="videos-label" data-i18n="videosLabel">COACHING EN ACTION</div>
+    <h2 id="videos-title" data-i18n="videosTitle">NOS VIDÉOS</h2>
+  </div>
+
+  <div id="videos-tabs">
+    <button class="video-tab active" data-category="all" data-i18n="videoTabAll">Tout</button>
+    <button class="video-tab" data-category="transformation" data-i18n="videoTabTrans">Transformation</button>
+    <button class="video-tab" data-category="force" data-i18n="videoTabForce">Force</button>
+    <button class="video-tab" data-category="cardio" data-i18n="videoTabCardio">Cardio</button>
+    <button class="video-tab" data-category="nutrition" data-i18n="videoTabNutrition">Nutrition</button>
+  </div>
+
+  <div id="videos-grid"></div>
+</section>
+
+<div id="contact-overlay" onclick="closeContactPopup()">
+  <div id="contact-popup" onclick="event.stopPropagation()">
+    <button id="contact-close" onclick="closeContactPopup()" aria-label="Fermer le formulaire">✕</button>
+
+    <div id="contact-left">
+      <div id="contact-left-label" data-i18n="contactIntroLabel">PRÊT À COMMENCER ?</div>
+      <h2 id="contact-left-title" data-i18n="contactIntroTitle">PARLONS DE VOS OBJECTIFS</h2>
+      <div id="contact-left-info">
+        <div class="contact-info-block">
+          <span class="contact-info-name">SAMUEL</span>
+          <span class="contact-info-role" data-i18n="coachLabel">Coach Personnel</span>
+          <a href="mailto:Samcrotv@hotmail.com" class="contact-info-detail">Samcrotv@hotmail.com</a>
+          <a href="tel:+14386001894" class="contact-info-detail">+1 (438) 600-1894</a>
+          <span class="contact-info-detail">Montréal et les environs</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="contact-right">
+      <form id="contactForm">
+        <div class="contact-field">
+          <label data-i18n="formName">Nom</label>
+          <input type="text" name="name" required placeholder="Jean Tremblay">
+        </div>
+        <div class="contact-field">
+          <label data-i18n="formEmail">Email</label>
+          <input type="email" name="email" required placeholder="votre@email.com">
+        </div>
+        <div class="contact-field">
+          <label data-i18n="formPhone">Téléphone</label>
+          <input type="tel" name="phone" placeholder="+1 (514) 000-0000">
+        </div>
+        <div class="contact-field">
+          <label data-i18n="formProgram">Programme</label>
+          <select name="program" class="program-proxy" hidden aria-hidden="true" tabindex="-1">
+            <option value=""></option>
+            <option value="transformation" data-i18n="prog1Nom">Transformation</option>
+            <option value="force" data-i18n="prog2Nom">Force & Masse</option>
+            <option value="cardio" data-i18n="prog3Nom">Cardio</option>
+            <option value="sur-mesure" data-i18n="prog4Nom">Sur Mesure</option>
+          </select>
+          <div id="program-options">
+            <label class="program-option">
+              <input type="radio" name="program" value="transformation">
+              <span data-i18n="prog1Nom">Transformation</span>
+            </label>
+            <label class="program-option">
+              <input type="radio" name="program" value="force">
+              <span data-i18n="prog2Nom">Force & Masse</span>
+            </label>
+            <label class="program-option">
+              <input type="radio" name="program" value="cardio">
+              <span data-i18n="prog3Nom">Cardio</span>
+            </label>
+            <label class="program-option">
+              <input type="radio" name="program" value="sur-mesure">
+              <span data-i18n="prog4Nom">Sur Mesure</span>
+            </label>
+          </div>
+        </div>
+        <div class="contact-field">
+          <label data-i18n="formMessage">Message</label>
+          <textarea name="message" rows="3" placeholder="Parlez-moi de vos objectifs..."></textarea>
+        </div>
+        <button type="submit" id="contact-submit" data-i18n="formSubmit">Envoyer</button>
+        <div id="formSuccess" style="display:none">✓ Merci ! Samuel vous répondra dans les 48h.</div>
+      </form>
+    </div>
   </div>
 </div>
 
-<!-- HERO -->
-<section class="hero" aria-label="Bannière principale">
-  <img class="hero-image" src="images/hero.png" alt="" aria-hidden="true">
-  <div class="hero-overlay" aria-hidden="true"></div>
-  <div class="hero-content">
-    <h1 class="hero-title" data-i18n="hero.title">TRANSFORMEZ VOTRE CORPS</h1>
-    <ul class="hero-bullets" aria-label="Avantages du coaching">
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span data-i18n="hero.bullet1">Coaching personnalisé à Montréal</span>
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span data-i18n="hero.bullet2">Programmes adaptés à vos objectifs</span>
-      </li>
-      <li>
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span data-i18n="hero.bullet3">Suivi motivant et résultats concrets</span>
-      </li>
-    </ul>
-    <div class="hero-ctas">
-      <a href="contact.html" class="btn btn-hero-primary" data-i18n="hero.cta_primary">Commencer maintenant</a>
-      <a href="offres.html" class="btn btn-hero-secondary" data-i18n="hero.cta_secondary">Voir les programmes</a>
-    </div>
+<div id="video-player-overlay" onclick="closeVideoPlayer()">
+  <div id="video-player-container" onclick="event.stopPropagation()">
+    <button id="video-player-close" onclick="closeVideoPlayer()" aria-label="Fermer la vidéo">✕</button>
+    <iframe id="video-iframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
-</section>
+</div>
 
-<!-- STATS -->
-<section class="stats-section" aria-label="Chiffres clés">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card reveal">
-        <div class="stat-number" data-i18n="stats.clients_count">300+</div>
-        <div class="stat-label" data-i18n="stats.clients_label">Clients transformés</div>
-      </div>
-      <div class="stat-card reveal">
-        <div class="stat-number" data-i18n="stats.years_count">10+</div>
-        <div class="stat-label" data-i18n="stats.years_label">Années d'expérience</div>
-      </div>
-      <div class="stat-card reveal">
-        <div class="stat-number" data-i18n="stats.satisfaction_count">98%</div>
-        <div class="stat-label" data-i18n="stats.satisfaction_label">Taux de satisfaction</div>
-      </div>
-    </div>
+<div id="mobile-menu">
+  <button id="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Fermer le menu">✕</button>
+  <ul>
+    <li><a href="#coach" onclick="toggleMobileMenu()" data-i18n="navCoach">Coach</a></li>
+    <li><a href="#videos" onclick="toggleMobileMenu()" data-i18n="navVideos">Vidéos</a></li>
+    <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
+    <li><a href="javascript:void(0)" onclick="toggleMobileMenu(); openContactPopup(); return false;" data-i18n="navContact">Contact</a></li>
+  </ul>
+  <div id="mobile-lang">
+    <button onclick="switchLang('fr')" class="lang-btn active" data-lang="fr">FR</button>
+    <button onclick="switchLang('en')" class="lang-btn" data-lang="en">EN</button>
   </div>
-</section>
+</div>
 
-<!-- À PROPOS -->
-<section class="about-section" aria-labelledby="about-title">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-photo reveal" aria-hidden="true">
-        <svg class="about-photo-icon" viewBox="0 0 24 24">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-          <circle cx="12" cy="7" r="4"/>
-        </svg>
-      </div>
-      <div>
-        <h2 class="about-title" id="about-title" data-i18n="about.title">À PROPOS DE RONALD</h2>
-        <p class="about-text reveal" data-i18n="about.text1">Coach sportif certifié avec plus de 10 ans d'expérience à Montréal, Ronald a accompagné plus de 300 clients vers leurs objectifs de transformation physique.</p>
-        <p class="about-text reveal" data-i18n="about.text2">Sa philosophie : chaque corps est unique. Pas de méthode universelle — uniquement des programmes sur mesure, un suivi rigoureux et une motivation constante.</p>
-        <div class="about-cta reveal">
-          <a href="contact.html" class="btn btn-primary" data-i18n="about.cta">Me contacter</a>
-        </div>
-      </div>
-    </div>
+<div id="coach-ticker">
+  <div id="coach-ticker-track">
+    <span>X-ZONE FITNESS</span>
+    <span class="ticker-sep">—</span>
+    <span data-i18n="stat1Label">Clients transformés</span>
+    <span class="ticker-sep">·</span>
+    <span>300+</span>
+    <span class="ticker-sep">—</span>
+    <span data-i18n="stat2Label">Années d'expérience</span>
+    <span class="ticker-sep">·</span>
+    <span>10+</span>
+    <span class="ticker-sep">—</span>
+    <span>MONTRÉAL</span>
+    <span class="ticker-sep">·</span>
+    <span data-i18n="stat3Label">Taux de satisfaction</span>
+    <span class="ticker-sep">·</span>
+    <span>98%</span>
+    <span>X-ZONE FITNESS</span>
+    <span class="ticker-sep">—</span>
+    <span data-i18n="stat1Label">Clients transformés</span>
+    <span class="ticker-sep">·</span>
+    <span>300+</span>
+    <span class="ticker-sep">—</span>
+    <span data-i18n="stat2Label">Années d'expérience</span>
+    <span class="ticker-sep">·</span>
+    <span>10+</span>
+    <span class="ticker-sep">—</span>
+    <span>MONTRÉAL</span>
+    <span class="ticker-sep">·</span>
+    <span data-i18n="stat3Label">Taux de satisfaction</span>
+    <span class="ticker-sep">·</span>
+    <span>98%</span>
   </div>
-</section>
+</div>
 
-<!-- TÉMOIGNAGES -->
-<section class="testimonials-section" aria-labelledby="testimonials-title">
-  <h2 class="section-title" id="testimonials-title" data-i18n="testimonialsTitle">CE QUE DISENT NOS CLIENTS</h2>
-  <div id="testimonials-carousel"></div>
-  <div class="testimonials-dots" id="testimonials-dots"></div>
-  <div class="testimonials-arrows">
-    <button class="testimonials-arrow-btn" id="testimonials-prev" aria-label="Précédent">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <button class="testimonials-arrow-btn" id="testimonials-next" aria-label="Suivant">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 6 15 12 9 18"/></svg>
-    </button>
-  </div>
-</section>
-
-<!-- CTA FINAL -->
-<section class="cta-section" aria-labelledby="cta-title">
-  <div class="container">
-    <div class="cta-card reveal">
-      <h2 class="cta-title" id="cta-title" data-i18n="cta_section.title">PRÊT À COMMENCER ?</h2>
-      <p class="cta-subtitle" data-i18n="cta_section.subtitle">Faites le premier pas vers la meilleure version de vous-même.</p>
-      <a href="contact.html" class="btn btn-white" data-i18n="cta_section.button">Contactez-nous maintenant</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer" role="contentinfo">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div class="footer-logo">X-ZONE FITNESS</div>
-        <p class="footer-tagline" data-i18n="footer.tagline">Coaching sportif personnalisé à Montréal</p>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer.nav_title">Navigation</div>
-        <ul class="footer-links" role="list">
-          <li><a href="index.html" data-i18n="nav.home">Accueil</a></li>
-          <li><a href="offres.html" data-i18n="nav.programs">Programmes</a></li>
-          <li><a href="galerie.html" data-i18n="nav.gallery">Galerie</a></li>
-          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="footer-col-title" data-i18n="footer.social_title">Réseaux sociaux</div>
-        <div class="footer-socials">
-          <a href="#" class="footer-social-link" aria-label="Instagram" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="Facebook" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="YouTube" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="black"/></svg>
-          </a>
-          <a href="#" class="footer-social-link" aria-label="TikTok" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>&copy; <span id="footer-year"></span> </span><span data-i18n="footer.copyright">X-Zone Fitness. Tous droits réservés.</span>
-    </div>
+<footer id="site-footer">
+  <span id="footer-brand">X-ZONE FITNESS</span>
+  <span id="footer-copy">© <span id="footer-year"></span> — <span data-i18n="footerCopyright">Tous droits réservés.</span></span>
+  <div id="footer-socials">
+    <a href="javascript:void(0)" aria-label="Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="javascript:void(0)" aria-label="TikTok">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
+    </a>
+    <a href="javascript:void(0)" aria-label="YouTube">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.3 5 12 5 12 5s-4.3 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9C6.8 19 12 19 12 19s4.3 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM9.7 14.5v-5.5l5.5 2.8-5.5 2.7z"/></svg>
+    </a>
   </div>
 </footer>
 
 <script src="js/i18n.js"></script>
+<script src="js/contact.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>
