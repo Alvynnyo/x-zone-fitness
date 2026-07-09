@@ -43,7 +43,11 @@ function refreshBodyLock() {
 }
 
 function switchLang(lang) {
-  if (typeof setLang === 'function') setLang(lang);
+  if (typeof changeLangWithCurtain === 'function') {
+    changeLangWithCurtain(lang);
+  } else if (typeof setLang === 'function') {
+    setLang(lang);
+  }
 }
 
 function toggleMobileMenu(forceOpen) {
@@ -64,6 +68,7 @@ function openContactPopup() {
   if (!overlay) return;
 
   overlay.classList.add('active');
+  document.body.classList.add('contact-open');
   refreshBodyLock();
   window.requestAnimationFrame(() => document.getElementById('contact-close')?.focus());
 }
@@ -73,6 +78,7 @@ function closeContactPopup() {
   if (!overlay) return;
 
   overlay.classList.remove('active');
+  document.body.classList.remove('contact-open');
   refreshBodyLock();
 }
 

@@ -2,6 +2,7 @@ const STORAGE_KEY = 'xzone_lang';
 const DEFAULT_LANG = 'fr';
 
 let translations = {};
+let langTransitionRunning = false;
 
 async function loadTranslations(lang, allowDefaultFallback = true) {
   try {
@@ -50,6 +51,39 @@ async function setLang(lang) {
   document.dispatchEvent(new CustomEvent('i18n:updated'));
 }
 
+function setLangButtonsDisabled(disabled) {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.disabled = disabled;
+    btn.style.pointerEvents = disabled ? 'none' : '';
+  });
+}
+
+function changeLangWithCurtain(newLang) {
+  if (langTransitionRunning) return;
+
+  const curtain = document.getElementById('lang-transition-curtain');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (!curtain || prefersReducedMotion) {
+    setLang(newLang);
+    return;
+  }
+
+  langTransitionRunning = true;
+  setLangButtonsDisabled(true);
+  curtain.classList.add('is-active');
+
+  window.setTimeout(() => {
+    setLang(newLang).finally(() => {
+      window.setTimeout(() => {
+        curtain.classList.remove('is-active');
+        setLangButtonsDisabled(false);
+        langTransitionRunning = false;
+      }, 80);
+    });
+  }, 180);
+}
+
 async function initI18n() {
   const lang = localStorage.getItem(STORAGE_KEY) || DEFAULT_LANG;
   const resolvedLang = await loadTranslations(lang);
@@ -57,12 +91,13 @@ async function initI18n() {
   applyTranslations();
   updateButtons(resolvedLang || lang);
   document.querySelectorAll('.lang-btn').forEach(btn =>
-    btn.addEventListener('click', () => setLang(btn.dataset.lang))
+    btn.addEventListener('click', () => changeLangWithCurtain(btn.dataset.lang))
   );
   document.dispatchEvent(new CustomEvent('i18n:updated'));
 }
 
 // API publique : même logique de résolution de clé que data-i18n (getVal), exposée sans duplication.
 window.i18n = { t: getVal };
+window.changeLangWithCurtain = changeLangWithCurtain;
 
 document.addEventListener('DOMContentLoaded', initI18n);

@@ -50,10 +50,6 @@
       <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
       <li><a href="#contact-popup" id="nav-contact" onclick="openContactPopup(); return false;" data-i18n="navContact">Contact</a></li>
     </ul>
-    <div id="hero-lang">
-      <button onclick="switchLang('fr')" id="btnFr" class="lang-btn active" data-lang="fr">FR</button>
-      <button onclick="switchLang('en')" id="btnEn" class="lang-btn" data-lang="en">EN</button>
-    </div>
     <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -258,11 +254,17 @@
   </div>
 
   <nav class="mobile-menu-links">
+    <a href="index.html" class="mobile-menu-link" data-i18n="navHome">Accueil</a>
     <a href="#coach" class="mobile-menu-link" data-i18n="navCoach">Coach</a>
     <a href="#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
     <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
     <a href="javascript:void(0)" class="mobile-menu-link" data-mobile-contact data-i18n="navContact">Contact</a>
   </nav>
+
+  <div class="mobile-menu-lang">
+    <button class="mobile-menu-lang-btn lang-btn active" data-lang="fr">FR</button>
+    <button class="mobile-menu-lang-btn lang-btn" data-lang="en">EN</button>
+  </div>
 </div>
 
 <div id="coach-ticker">
@@ -315,6 +317,8 @@
     </a>
   </div>
 </footer>
+
+<div id="lang-transition-curtain" class="lang-curtain" aria-hidden="true"></div>
 
 <script src="js/i18n.js"></script>
 <script src="js/contact.js"></script>
