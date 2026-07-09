@@ -13,8 +13,7 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <script type="application/ld+json">
   {
@@ -77,7 +76,11 @@
       <img src="images/hero-flatlay.jpg" alt="Samuel — Coach X-Zone Fitness">
     </div>
     <div id="hero-video-label">
-      <span id="play-icon">&#9654;</span>
+      <span id="play-icon" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      </span>
       <span data-i18n="heroVideoLabel">SAMUEL</span>
     </div>
   </div>
@@ -89,7 +92,7 @@
 </section>
 
 <section class="programs-showcase" aria-label="Nos formats de coaching">
-  <p class="programs-eyebrow" data-i18n="programsEyebrow">Trouve ton</p>
+  <p class="programs-eyebrow" data-i18n="programsEyebrow">QUEL EST TON OBJECTIF ?</p>
   <h2 class="programs-title" id="programs-title" data-i18n-dynamic="programsTitle">PRISE DE MASSE</h2>
 
   <div class="programs-tabs" role="tablist" aria-label="Choix du format">
@@ -159,7 +162,11 @@
 
 <div id="contact-overlay" onclick="closeContactPopup()">
   <div id="contact-popup" onclick="event.stopPropagation()">
-    <button id="contact-close" onclick="closeContactPopup()" aria-label="Fermer le formulaire">✕</button>
+    <button id="contact-close" onclick="closeContactPopup()" aria-label="Fermer le formulaire">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
 
     <div id="contact-left">
       <div id="contact-left-label" data-i18n="contactIntroLabel">PRÊT À COMMENCER ?</div>
@@ -222,7 +229,7 @@
           <textarea name="message" rows="3" placeholder="Parlez-moi de vos objectifs..."></textarea>
         </div>
         <button type="submit" id="contact-submit" data-i18n="formSubmit">Envoyer</button>
-        <div id="formSuccess" style="display:none">✓ Merci ! Samuel vous répondra dans les 48h.</div>
+      <div id="formSuccess" style="display:none">Merci ! Samuel vous répondra dans les 48h.</div>
       </form>
     </div>
   </div>
@@ -230,23 +237,32 @@
 
 <div id="video-player-overlay" onclick="closeVideoPlayer()">
   <div id="video-player-container" onclick="event.stopPropagation()">
-    <button id="video-player-close" onclick="closeVideoPlayer()" aria-label="Fermer la vidéo">✕</button>
+    <button id="video-player-close" onclick="closeVideoPlayer()" aria-label="Fermer la vidéo">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
     <iframe id="video-iframe" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 </div>
 
-<div id="mobile-menu">
-  <button id="mobile-menu-close" onclick="toggleMobileMenu()" aria-label="Fermer le menu">✕</button>
-  <ul>
-    <li><a href="#coach" onclick="toggleMobileMenu()" data-i18n="navCoach">Coach</a></li>
-    <li><a href="#videos" onclick="toggleMobileMenu()" data-i18n="navVideos">Vidéos</a></li>
-    <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
-    <li><a href="javascript:void(0)" onclick="toggleMobileMenu(); openContactPopup(); return false;" data-i18n="navContact">Contact</a></li>
-  </ul>
-  <div id="mobile-lang">
-    <button onclick="switchLang('fr')" class="lang-btn active" data-lang="fr">FR</button>
-    <button onclick="switchLang('en')" class="lang-btn" data-lang="en">EN</button>
+<div id="mobile-menu" class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="mobile-menu-header">
+    <span class="mobile-menu-logo">X-ZONE FITNESS</span>
+    <button class="mobile-menu-close" aria-label="Fermer le menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
   </div>
+
+  <nav class="mobile-menu-links">
+    <a href="#coach" class="mobile-menu-link" data-i18n="navCoach">Coach</a>
+    <a href="#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
+    <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
+    <a href="javascript:void(0)" class="mobile-menu-link" data-mobile-contact data-i18n="navContact">Contact</a>
+  </nav>
 </div>
 
 <div id="coach-ticker">

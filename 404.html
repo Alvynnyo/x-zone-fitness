@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
   <style>
     body {
@@ -39,7 +39,7 @@
     }
 
     #not-found-title {
-      font-family: 'Bebas Neue', sans-serif;
+      font-family: var(--font-heading);
       font-size: clamp(72px, 12vw, 160px);
       line-height: 0.9;
       letter-spacing: 0.02em;
@@ -62,19 +62,20 @@
       min-height: 44px;
       padding: 14px 28px;
       border: 1px solid rgba(255,255,255,0.25);
-      border-radius: 4px;
+      border-radius: 999px;
       color: white;
       text-decoration: none;
       font-size: 12px;
+      font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       transition: all 0.2s;
     }
 
     #not-found-link:hover {
-      background: white;
+      background: #ff5b4e;
       color: #0a0a0a;
-      border-color: white;
+      border-color: #ff5b4e;
     }
 
     @media (max-width: 768px) {

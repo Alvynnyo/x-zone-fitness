@@ -35,7 +35,7 @@ const programsData = {
 
 function refreshBodyLock() {
   const locked =
-    document.getElementById('mobile-menu')?.classList.contains('active') ||
+    document.getElementById('mobile-menu')?.classList.contains('is-open') ||
     document.getElementById('contact-overlay')?.classList.contains('active') ||
     document.getElementById('video-player-overlay')?.classList.contains('active');
 
@@ -51,8 +51,9 @@ function toggleMobileMenu(forceOpen) {
   const hamburger = document.getElementById('hamburger');
   if (!menu) return;
 
-  const nextState = typeof forceOpen === 'boolean' ? forceOpen : !menu.classList.contains('active');
-  menu.classList.toggle('active', nextState);
+  const nextState = typeof forceOpen === 'boolean' ? forceOpen : !menu.classList.contains('is-open');
+  menu.classList.toggle('is-open', nextState);
+  menu.setAttribute('aria-hidden', String(!nextState));
   hamburger?.classList.toggle('active', nextState);
   hamburger?.setAttribute('aria-expanded', String(nextState));
   refreshBodyLock();
@@ -252,6 +253,30 @@ document.addEventListener('DOMContentLoaded', () => {
       event.preventDefault();
       openContactPopup();
     });
+  });
+
+  document.querySelector('.mobile-menu-close')?.addEventListener('click', () => {
+    toggleMobileMenu(false);
+  });
+
+  document.querySelectorAll('.mobile-menu-link').forEach(link => {
+    link.addEventListener('click', event => {
+      toggleMobileMenu(false);
+
+      if (link.hasAttribute('data-mobile-contact')) {
+        event.preventDefault();
+        openContactPopup();
+      }
+    });
+  });
+
+  document.addEventListener('click', event => {
+    const menu = document.getElementById('mobile-menu');
+    const hamburger = document.getElementById('hamburger');
+    if (!menu?.classList.contains('is-open')) return;
+    if (menu.contains(event.target) || hamburger?.contains(event.target)) return;
+
+    toggleMobileMenu(false);
   });
 
   document.querySelectorAll('#contactForm input[type="radio"][name="program"]').forEach(radio => {
