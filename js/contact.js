@@ -20,6 +20,23 @@ function ensureMessageElement(form, successEl) {
   return msgEl;
 }
 
+function ensureProgramError(form) {
+  let el = document.getElementById('program-message');
+  if (el) return el;
+
+  const group = form.querySelector('#program-options');
+  if (!group) return null;
+
+  el = document.createElement('div');
+  el.id = 'program-message';
+  el.className = 'form-message error';
+  el.setAttribute('role', 'alert');
+  el.setAttribute('aria-live', 'polite');
+  el.style.display = 'none';
+  group.insertAdjacentElement('afterend', el);
+  return el;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm') || document.getElementById('contact-form');
   if (!form) return;
@@ -49,6 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // Validation client : un programme (radio) doit être sélectionné avant l'envoi.
+    const programErrEl = ensureProgramError(form);
+    const programChecked = form.querySelector('input[type="radio"][name="program"]:checked');
+    if (form.querySelector('#program-options') && !programChecked) {
+      if (successEl) successEl.style.display = 'none';
+      if (programErrEl) {
+        programErrEl.textContent = 'Sélectionne un programme';
+        programErrEl.style.display = '';
+      } else {
+        msgEl.textContent = 'Sélectionne un programme';
+        msgEl.className = 'form-message error';
+      }
+      return;
+    }
+    if (programErrEl) {
+      programErrEl.textContent = '';
+      programErrEl.style.display = 'none';
+    }
+
     const originalText = submitBtn?.textContent || '';
     if (submitBtn) {
       submitBtn.disabled = true;
@@ -65,7 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify({ name, email, phone, program, message })
       });
 
-      if (!res.ok) throw new Error('API error');
+      let data = null;
+      try { data = await res.json(); } catch {}
+
+      if (!res.ok) {
+        // Affiche le message d'erreur réel renvoyé par la Function (ex. 400) plutôt qu'un texte générique.
+        msgEl.textContent = data?.error || 'Une erreur est survenue. Veuillez réessayer ou envoyer un email directement.';
+        msgEl.className = 'form-message error';
+        return;
+      }
 
       form.reset();
       if (successEl) successEl.style.display = 'block';

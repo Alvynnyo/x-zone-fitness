@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:,">
   <title>Page introuvable — X-Zone Fitness</title>
   <meta name="description" content="La page demandée est introuvable. Retournez vers X-Zone Fitness.">
   <meta name="robots" content="noindex">
@@ -13,8 +14,8 @@
   <style>
     body {
       min-height: 100vh;
-      background: #0a0a0a;
-      color: white;
+      background: var(--color-bg);
+      color: var(--color-text);
     }
 
     #not-found {
@@ -23,17 +24,18 @@
       flex-direction: column;
       justify-content: center;
       padding: 140px 40px 80px;
-      background: #0a0a0a;
+      background: transparent;
     }
 
     #not-found-inner {
       max-width: 760px;
+      margin: 0 auto;
     }
 
     #not-found-code {
       font-size: 11px;
       letter-spacing: 0.2em;
-      color: rgba(255,255,255,0.35);
+      color: var(--color-accent);
       text-transform: uppercase;
       margin-bottom: 24px;
     }
@@ -43,7 +45,7 @@
       font-size: clamp(72px, 12vw, 160px);
       line-height: 0.9;
       letter-spacing: 0.02em;
-      color: white;
+      color: var(--color-text);
       margin-bottom: 28px;
     }
 
@@ -51,7 +53,7 @@
       max-width: 520px;
       font-size: clamp(16px, 2vw, 20px);
       line-height: 1.6;
-      color: rgba(255,255,255,0.55);
+      color: var(--color-text-secondary);
       margin-bottom: 36px;
     }
 
@@ -61,9 +63,10 @@
       justify-content: center;
       min-height: 44px;
       padding: 14px 28px;
-      border: 1px solid rgba(255,255,255,0.25);
+      border: 1px solid var(--color-accent);
       border-radius: 999px;
-      color: white;
+      background: var(--color-accent);
+      color: var(--color-white);
       text-decoration: none;
       font-size: 12px;
       font-weight: 700;
@@ -73,9 +76,10 @@
     }
 
     #not-found-link:hover {
-      background: #ff5b4e;
-      color: #0a0a0a;
-      border-color: #ff5b4e;
+      background: var(--color-text);
+      border-color: var(--color-text);
+      color: var(--color-white);
+      transform: translateY(-2px);
     }
 
     @media (max-width: 768px) {
@@ -89,15 +93,43 @@
   <nav id="hero-nav">
     <a href="index.html" id="hero-logo">X-ZONE FITNESS</a>
     <ul id="hero-links">
-      <li><a href="index.html#coach">Coach</a></li>
-      <li><a href="index.html#videos">Vidéos</a></li>
-      <li><a href="galerie.html">Galerie</a></li>
-      <li><a href="index.html#contact-popup">Contact</a></li>
+      <li><a href="index.html#coach" data-i18n="navCoach">Coach</a></li>
+      <li><a href="index.html#videos" data-i18n="navVideos">Vidéos</a></li>
+      <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
+      <li><a href="index.html#contact-popup" data-i18n="navContact">Contact</a></li>
     </ul>
+    <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
+  <div id="mobile-menu" class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-menu-header">
+      <span class="mobile-menu-logo">X-ZONE FITNESS</span>
+      <button class="mobile-menu-close" aria-label="Fermer le menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="mobile-menu-links">
+      <a href="index.html" class="mobile-menu-link" data-i18n="navHome">Accueil</a>
+      <a href="index.html#coach" class="mobile-menu-link" data-i18n="navCoach">Coach</a>
+      <a href="index.html#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
+      <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
+      <a href="index.html#contact-popup" class="mobile-menu-link" data-i18n="navContact">Contact</a>
+    </nav>
+
+    <div class="mobile-menu-lang">
+      <button class="mobile-menu-lang-btn lang-btn active" data-lang="fr">FR</button>
+      <button class="mobile-menu-lang-btn lang-btn" data-lang="en">EN</button>
+    </div>
+  </div>
+
   <main id="not-found">
-    <div id="not-found-inner">
+    <div id="not-found-inner" class="box-card">
       <div id="not-found-code">Erreur 404</div>
       <h1 id="not-found-title">Page introuvable</h1>
       <p id="not-found-text">La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil pour continuer.</p>
@@ -105,11 +137,12 @@
     </div>
   </main>
 
-  <footer id="site-footer">
+  <footer id="site-footer" class="box-card">
     <span id="footer-brand">X-ZONE FITNESS</span>
     <span id="footer-copy">© <span id="footer-year"></span> — Tous droits réservés.</span>
   </footer>
 
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
