@@ -158,6 +158,31 @@ function initTestimonialsCarousel() {
   render();
 }
 
+function initPlanAccordions() {
+  const toggles = document.querySelectorAll('.plan-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const card = toggle.closest('.plan-card');
+      const open = !card?.classList.contains('is-open');
+      card?.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  });
+
+  const syncForViewport = () => {
+    const mobile = window.matchMedia('(max-width: 760px)').matches;
+    toggles.forEach((toggle, index) => {
+      const card = toggle.closest('.plan-card');
+      const open = !mobile || index === 0;
+      card?.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  };
+
+  syncForViewport();
+  window.addEventListener('resize', syncForViewport, { passive: true });
+}
+
 // Charge une photo Pexels via la Netlify Function et l'applique en fond.
 // Toute erreur (réseau, status != 200, aucune photo, image illisible) est silencieuse :
 // on ne touche jamais au style existant, le fond CSS d'origine reste en place.
@@ -278,6 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   renderVideos();
   initTestimonialsCarousel();
+  initPlanAccordions();
 
   // Masque la vignette vidéo tant qu'aucune vidéo n'est disponible (évite un clic sans effet).
   // Se réaffiche automatiquement dès que `videos` contient au moins une entrée.

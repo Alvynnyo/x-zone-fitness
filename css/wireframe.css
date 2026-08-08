@@ -767,6 +767,174 @@
   color: var(--green-soft);
 }
 
+/* 08 — Formules */
+.plans-section {
+  padding: var(--section-block) var(--section-inline);
+  color: var(--text);
+  background: var(--white);
+}
+
+.plans-inner {
+  max-width: var(--content-max);
+  margin: 0 auto;
+}
+
+.plans-heading {
+  max-width: 760px;
+  margin-bottom: clamp(2.5rem, 6vw, 5rem);
+}
+
+.plans-heading .section-kicker {
+  color: var(--green-dark);
+}
+
+.plans-heading h2 {
+  margin: 0.75rem 0 1rem;
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.9;
+}
+
+.plans-heading > p:last-child {
+  max-width: 620px;
+  color: var(--text-muted);
+}
+
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid #e7ebe7;
+  box-shadow: none;
+}
+
+.plan-card--featured {
+  color: var(--white);
+  background: var(--bg-dark-2);
+  border-color: var(--bg-dark-2);
+  box-shadow: var(--shadow-soft);
+}
+
+.plan-popular {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-pill);
+  color: var(--bg-dark);
+  background: var(--green-soft);
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.plan-toggle {
+  display: grid;
+  grid-template-columns: 58px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  color: inherit;
+  text-align: left;
+}
+
+.plan-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border-radius: 12px;
+  color: var(--green-dark);
+  background: rgba(34, 197, 94, 0.12);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+}
+
+.plan-card--featured .plan-icon {
+  color: var(--bg-dark);
+  background: var(--green-soft);
+}
+
+.plan-toggle > span:nth-child(2) {
+  display: grid;
+}
+
+.plan-toggle small {
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.plan-card--featured .plan-toggle small {
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.plan-toggle strong {
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  line-height: 1;
+}
+
+.plan-toggle-mark {
+  display: none;
+}
+
+.plan-panel {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.plan-panel > p {
+  min-height: 76px;
+  margin: 2rem 0 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.plan-card--featured .plan-panel > p {
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.plan-panel ul {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.plan-panel li {
+  position: relative;
+  padding-left: 1.4rem;
+  font-size: 0.84rem;
+}
+
+.plan-panel li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--green-dark);
+  font-weight: 800;
+}
+
+.plan-card--featured .plan-panel li::before {
+  color: var(--green-soft);
+}
+
+.plan-panel .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
 @media (max-width: 760px) {
   #hero-nav {
     width: calc(100% - 24px);
@@ -1017,6 +1185,63 @@
 
   .testimonial-slide blockquote {
     font-size: 2.5rem;
+  }
+
+  .plans-section {
+    padding: 4rem 0.75rem;
+  }
+
+  .plans-heading h2 {
+    font-size: 3.45rem;
+  }
+
+  .plans-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .plan-card {
+    padding: 1rem;
+  }
+
+  .plan-popular {
+    position: static;
+    align-self: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .plan-toggle {
+    grid-template-columns: 52px 1fr auto;
+  }
+
+  .plan-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .plan-toggle-mark {
+    display: block;
+    font-size: 1.6rem;
+    transition: transform 180ms ease;
+  }
+
+  .plan-card.is-open .plan-toggle-mark {
+    transform: rotate(45deg);
+  }
+
+  .plan-panel {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 300ms ease, opacity 220ms ease;
+  }
+
+  .plan-card.is-open .plan-panel {
+    max-height: 520px;
+    opacity: 1;
+  }
+
+  .plan-panel > p {
+    min-height: 0;
   }
 }
 
