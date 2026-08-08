@@ -17,6 +17,12 @@
   --content-max: 1240px;
 }
 
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 .box-card {
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-soft);
@@ -154,10 +160,12 @@
 }
 
 .hero-stat-pill span {
+  min-width: 0;
   font-size: 0.68rem;
   font-weight: 700;
   line-height: 1.2;
   text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
 
 .hero-stat-pill--offset {
@@ -1216,6 +1224,12 @@
     font-size: 1.12rem;
   }
 
+  #hero .hero-text {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .hero-actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -1435,7 +1449,7 @@
   }
 
   .plans-heading h2 {
-    font-size: 3.45rem;
+    font-size: clamp(2.5rem, 12vw, 3rem);
   }
 
   .plans-grid {
