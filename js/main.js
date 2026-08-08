@@ -123,6 +123,48 @@ function updateHeroNavOnScroll() {
   updateActiveNavLink();
 }
 
+// Charge une photo Pexels via la Netlify Function et l'applique en fond.
+// Toute erreur (réseau, status != 200, aucune photo, image illisible) est silencieuse :
+// on ne touche jamais au style existant, le fond CSS d'origine reste en place.
+function loadGymPhoto(query, targetSelector) {
+  const target = document.querySelector(targetSelector);
+  if (!target) {
+    console.warn(`[pexels] cible introuvable: ${targetSelector}`);
+    return Promise.resolve(false);
+  }
+
+  const endpoint = `/.netlify/functions/pexels?query=${encodeURIComponent(query)}&per_page=1`;
+
+  return fetch(endpoint)
+    .then(res => {
+      if (!res.ok) throw new Error(`status ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      const url = data?.photos?.[0]?.src?.large2x;
+      if (!url) throw new Error('aucune photo retournée');
+
+      // On précharge : si l'URL Pexels échoue, on n'écrase pas le fond existant.
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve(url);
+        img.onerror = () => reject(new Error('image non chargée'));
+        img.src = url;
+      });
+    })
+    .then(url => {
+      target.style.backgroundImage = `url("${url}")`;
+      target.style.backgroundSize = 'cover';
+      target.style.backgroundPosition = 'center';
+      target.style.backgroundRepeat = 'no-repeat';
+      return true;
+    })
+    .catch(err => {
+      console.warn(`[pexels] "${query}" non chargée (${err.message}) — fond d'origine conservé.`);
+      return false;
+    });
+}
+
 Object.assign(window, {
   switchLang,
   toggleMobileMenu,
@@ -131,7 +173,8 @@ Object.assign(window, {
   renderVideos,
   openVideoPlayer,
   closeVideoPlayer,
-  openVideoPopup
+  openVideoPopup,
+  loadGymPhoto
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -234,4 +277,5 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach(el => el.classList.add('visible'));
   }
 
+  loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
 });
