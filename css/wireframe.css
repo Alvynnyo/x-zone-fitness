@@ -1,0 +1,70 @@
+/* X-Zone Fitness — couche de mise en page du wireframe validé */
+:root {
+  --green: #22c55e;
+  --green-dark: #16a34a;
+  --green-soft: #86efac;
+  --bg-dark: #0b1410;
+  --bg-dark-2: #121e18;
+  --off-white: #f4f6f1;
+  --white: #ffffff;
+  --text: #101612;
+  --text-muted: #667068;
+  --radius-card: 16px;
+  --radius-pill: 40px;
+  --shadow-soft: 0 12px 32px rgba(16, 22, 18, 0.08);
+  --section-inline: clamp(1rem, 4vw, 3rem);
+  --section-block: clamp(4.5rem, 8vw, 7.5rem);
+  --content-max: 1240px;
+}
+
+.box-card {
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn,
+.nav-cta,
+#contact-submit {
+  border-radius: var(--radius-pill);
+}
+
+#hero-nav .nav-cta {
+  display: inline-flex;
+  min-height: 40px;
+  padding: 0 1.25rem;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  background: var(--green-dark);
+  border: 1px solid var(--green-dark);
+}
+
+#hero-nav .nav-cta::after {
+  display: none;
+}
+
+#hero-nav .nav-cta:hover,
+#hero-nav .nav-cta:focus-visible {
+  color: var(--white);
+  background: var(--bg-dark);
+  border-color: var(--bg-dark);
+}
+
+@media (max-width: 760px) {
+  #hero-nav {
+    width: calc(100% - 24px);
+    top: 12px;
+    padding: 11px 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
