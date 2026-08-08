@@ -164,6 +164,85 @@
   transform: translateX(-1.5rem);
 }
 
+/* 03 — Objectifs */
+#objectives {
+  padding: var(--section-block) var(--section-inline);
+  background: var(--white);
+}
+
+.objectives-shell {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: var(--off-white);
+  border: 0;
+}
+
+.objectives-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+#objectives .objectives-eyebrow {
+  margin: 0 0 0.5rem;
+  color: var(--green-dark);
+  text-align: left;
+}
+
+.objectives-header h2 {
+  max-width: 700px;
+  font-size: clamp(2.2rem, 5vw, 4.4rem);
+  line-height: 0.95;
+}
+
+#objectives .objectives-grid {
+  gap: 1rem;
+}
+
+#objectives .objective-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 330px;
+  padding: 1.5rem;
+  border: 0;
+  border-radius: var(--radius-card);
+  background: var(--white);
+  box-shadow: 0 8px 24px rgba(16, 22, 18, 0.05);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+#objectives .objective-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-soft);
+}
+
+.objective-index {
+  display: inline-flex;
+  width: 38px;
+  height: 38px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: auto;
+  border-radius: 10px;
+  color: var(--green-dark);
+  background: rgba(34, 197, 94, 0.12);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+}
+
+#objectives .objective-card-title {
+  margin-top: 2rem;
+  font-size: clamp(1.8rem, 2.6vw, 2.45rem);
+}
+
+#objectives .objective-card-list li::before {
+  background: var(--green);
+}
+
 @media (max-width: 760px) {
   #hero-nav {
     width: calc(100% - 24px);
@@ -230,6 +309,46 @@
 
   .hero-stat-pill--offset {
     transform: translateX(-0.75rem);
+  }
+
+  #objectives {
+    padding: 4rem 0.75rem;
+  }
+
+  .objectives-shell {
+    padding: 1rem;
+  }
+
+  .objectives-header {
+    align-items: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .objectives-header h2 {
+    font-size: 2.4rem;
+  }
+
+  .objectives-header .btn {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: 0.55rem 1rem;
+    font-size: 0.68rem;
+  }
+
+  #objectives .objectives-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #objectives .objective-card {
+    min-height: auto;
+  }
+
+  .objective-index {
+    margin-bottom: 1.5rem;
+  }
+
+  #objectives .objective-card-title {
+    margin-top: 0;
   }
 }
 
