@@ -82,7 +82,7 @@ function openVideoPopup() {
 }
 
 function updateActiveNavLink() {
-  const sections = ['coach', 'videos'];
+  const sections = ['method', 'coach', 'testimonials'];
   const links = document.querySelectorAll('#hero-links a');
   let current = '';
 
@@ -121,6 +121,41 @@ function updateHeroNavOnScroll() {
   }
 
   updateActiveNavLink();
+}
+
+function initTestimonialsCarousel() {
+  const carousel = document.querySelector('.testimonial-carousel');
+  const slides = Array.from(document.querySelectorAll('[data-testimonial-slide]'));
+  const previous = document.querySelector('[data-testimonial-prev]');
+  const next = document.querySelector('[data-testimonial-next]');
+  const currentLabel = document.querySelector('[data-testimonial-current]');
+  if (!carousel || !slides.length || !previous || !next) return;
+
+  let current = 0;
+
+  const render = () => {
+    slides.forEach((slide, index) => {
+      const active = index === current;
+      slide.classList.toggle('is-active', active);
+      slide.setAttribute('aria-hidden', String(!active));
+    });
+    if (currentLabel) currentLabel.textContent = String(current + 1).padStart(2, '0');
+  };
+
+  const move = direction => {
+    current = (current + direction + slides.length) % slides.length;
+    render();
+  };
+
+  previous.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  carousel.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft') move(-1);
+    if (event.key === 'ArrowRight') move(1);
+  });
+
+  carousel.setAttribute('tabindex', '0');
+  render();
 }
 
 // Charge une photo Pexels via la Netlify Function et l'applique en fond.
@@ -242,6 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   renderVideos();
+  initTestimonialsCarousel();
 
   // Masque la vignette vidéo tant qu'aucune vidéo n'est disponible (évite un clic sans effet).
   // Se réaffiche automatiquement dès que `videos` contient au moins une entrée.

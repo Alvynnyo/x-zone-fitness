@@ -46,7 +46,7 @@
     <div id="hero-logo">X-ZONE FITNESS</div>
     <ul id="hero-links">
       <li><a href="#coach" data-i18n="navCoach">Coach</a></li>
-      <li><a href="#videos" data-i18n="navVideos">Vidéos</a></li>
+      <li><a href="#method" data-i18n="navMethod">Méthode</a></li>
       <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
       <li><a href="#contact-popup" id="nav-contact" class="nav-cta" onclick="openContactPopup(); return false;" data-i18n="navContact">Contact</a></li>
     </ul>
@@ -259,22 +259,48 @@
   </div>
 </section>
 
-<!-- VIDÉOS -->
-<section id="videos">
-  <div id="videos-header">
-    <div id="videos-label" data-i18n="videosLabel">COACHING EN ACTION</div>
-    <h2 id="videos-title" data-i18n="videosTitle">NOS VIDÉOS</h2>
-  </div>
+<!-- TÉMOIGNAGES -->
+<section id="testimonials" class="testimonials-section" aria-labelledby="testimonials-title">
+  <div class="testimonials-inner">
+    <header class="testimonials-heading">
+      <div>
+        <p class="section-kicker" data-i18n="testimonialsEyebrow">TÉMOIGNAGES</p>
+        <h2 id="testimonials-title" data-i18n="testimonialsTitle">Ce sont leurs résultats qui parlent le mieux.</h2>
+      </div>
+      <div class="testimonial-controls">
+        <button type="button" class="testimonial-arrow" data-testimonial-prev aria-label="Témoignage précédent">←</button>
+        <button type="button" class="testimonial-arrow" data-testimonial-next aria-label="Témoignage suivant">→</button>
+      </div>
+    </header>
 
-  <div id="videos-tabs">
-    <button class="video-tab active" data-category="all" data-i18n="videoTabAll">Tout</button>
-    <button class="video-tab" data-category="transformation" data-i18n="videoTabTrans">Transformation</button>
-    <button class="video-tab" data-category="force" data-i18n="videoTabForce">Force</button>
-    <button class="video-tab" data-category="cardio" data-i18n="videoTabCardio">Cardio</button>
-    <button class="video-tab" data-category="nutrition" data-i18n="videoTabNutrition">Nutrition</button>
+    <div class="testimonial-carousel" aria-live="polite">
+      <article class="testimonial-slide is-active" data-testimonial-slide aria-hidden="false">
+        <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+        <blockquote data-i18n="testimonial1Text">En cinq mois, j’ai perdu 18 kg sans me sentir punie. Samuel a adapté chaque étape à mon rythme et m’a redonné confiance.</blockquote>
+        <div class="testimonial-person">
+          <img src="images/marie-pier-avatar.jpg" alt="Marie L." loading="lazy" width="72" height="72">
+          <span><strong>Marie L.</strong><small data-i18n="testimonial1Result">Perte de poids · 18 kg</small></span>
+        </div>
+      </article>
+      <article class="testimonial-slide" data-testimonial-slide aria-hidden="true">
+        <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+        <blockquote data-i18n="testimonial2Text">En trois mois, j’ai gagné en force et en masse comme jamais auparavant. Le plan est précis, mais toujours adapté à ma progression.</blockquote>
+        <div class="testimonial-person">
+          <img src="images/jean-francois-avatar.jpg" alt="Jonathan T." loading="lazy" width="72" height="72">
+          <span><strong>Jonathan T.</strong><small data-i18n="testimonial2Result">Force et masse · 12 semaines</small></span>
+        </div>
+      </article>
+      <article class="testimonial-slide" data-testimonial-slide aria-hidden="true">
+        <span class="testimonial-quote-mark" aria-hidden="true">“</span>
+        <blockquote data-i18n="testimonial3Text">Samuel a complètement changé ma vision du fitness. Ce n’est plus une corvée : c’est devenu une partie naturelle de ma vie.</blockquote>
+        <div class="testimonial-person">
+          <img src="images/karine-avatar.jpg" alt="Sophie C." loading="lazy" width="72" height="72">
+          <span><strong>Sophie C.</strong><small data-i18n="testimonial3Result">Remise en forme · 6 mois</small></span>
+        </div>
+      </article>
+    </div>
+    <p class="testimonial-status"><span data-testimonial-current>01</span> / 03</p>
   </div>
-
-  <div id="videos-grid"></div>
 </section>
 
 <div id="contact-overlay" onclick="closeContactPopup()">
@@ -377,7 +403,7 @@
   <nav class="mobile-menu-links">
     <a href="index.html" class="mobile-menu-link" data-i18n="navHome">Accueil</a>
     <a href="#coach" class="mobile-menu-link" data-i18n="navCoach">Coach</a>
-    <a href="#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
+    <a href="#method" class="mobile-menu-link" data-i18n="navMethod">Méthode</a>
     <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
     <a href="javascript:void(0)" class="mobile-menu-link" data-mobile-contact data-i18n="navContact">Contact</a>
   </nav>
