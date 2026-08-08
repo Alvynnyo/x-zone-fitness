@@ -340,4 +340,5 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
+  loadGymPhoto('gym equipment dramatic lighting', '#gallery-teaser-visual');
 });
