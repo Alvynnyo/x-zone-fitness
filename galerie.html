@@ -13,19 +13,21 @@
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:wght@600;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/design.css">
 </head>
 <body class="dark-page">
 
   <nav id="gallery-nav">
     <a href="index.html" id="gallery-nav-logo">X-ZONE FITNESS</a>
     <div id="gallery-nav-right">
-      <a href="index.html#coach" data-i18n="navCoach">Coach</a>
+      <a href="index.html#hero" data-i18n="navHome">Accueil</a>
+      <a href="index.html#formules" data-i18n="navFormules">Formules</a>
       <a href="index.html#videos" data-i18n="navVideos">Vidéos</a>
       <a href="galerie.html" class="active" data-i18n="navGalerie">Galerie</a>
-      <a href="javascript:void(0)" onclick="openContactPopup(); return false;" data-i18n="navContact">Contact</a>
     </div>
+    <a href="javascript:void(0)" class="nav-cta" onclick="openContactPopup(); return false;" data-i18n="navJoin">Rejoignez-nous</a>
     <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
       <span></span><span></span><span></span>
     </button>
@@ -148,7 +150,7 @@
 
     <nav class="mobile-menu-links">
       <a href="index.html" class="mobile-menu-link" data-i18n="navHome">Accueil</a>
-      <a href="index.html#coach" class="mobile-menu-link" data-i18n="navCoach">Coach</a>
+      <a href="index.html#formules" class="mobile-menu-link" data-i18n="navFormules">Formules</a>
       <a href="index.html#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
       <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
       <a href="javascript:void(0)" class="mobile-menu-link" data-mobile-contact data-i18n="navContact">Contact</a>
