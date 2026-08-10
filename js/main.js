@@ -347,9 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
-  loadGymPhoto('gym equipment dramatic lighting', '#gallery-teaser-visual');
 
-  // Photos Pexels des cartes Formules (conteneurs background, requête via data-attribute)
+  // Photos Pexels (cartes Formules, miniatures Vidéos, fond CTA) via data-attribute
+  // sur des conteneurs background — chaque échec est silencieux (fond d'origine conservé).
   document.querySelectorAll('[data-pexels-query]').forEach(el =>
     loadGymPhoto(el.dataset.pexelsQuery, el)
   );
