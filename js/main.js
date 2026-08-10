@@ -196,6 +196,10 @@ function loadGymPhoto(query, target) {
     return Promise.resolve(false);
   }
 
+  // État "chargement" : la cible affiche un skeleton et masque son visuel
+  // (le hero passe en opacity 0) le temps du préchargement — pas de bascule visible.
+  el.classList.add('pexels-loading');
+
   const endpoint = `/.netlify/functions/pexels?query=${encodeURIComponent(query)}&per_page=1`;
 
   return fetch(endpoint)
@@ -207,7 +211,7 @@ function loadGymPhoto(query, target) {
       const url = data?.photos?.[0]?.src?.large2x;
       if (!url) throw new Error('aucune photo retournée');
 
-      // On précharge : si l'URL Pexels échoue, on n'écrase jamais le visuel existant.
+      // On précharge entièrement l'image AVANT de l'afficher (aucun rendu partiel).
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => resolve(url);
@@ -224,13 +228,27 @@ function loadGymPhoto(query, target) {
         el.style.backgroundPosition = 'center';
         el.style.backgroundRepeat = 'no-repeat';
       }
+      // Image préchargée prête : on retire le skeleton et on révèle directement Pexels.
+      el.classList.remove('pexels-loading');
+      el.classList.add('pexels-loaded');
       return true;
     })
     .catch(err => {
+      // Échec silencieux : on retire le skeleton et on révèle le visuel d'origine (fallback local).
+      el.classList.remove('pexels-loading');
+      el.classList.add('pexels-failed');
       console.warn(`[pexels] "${query}" non chargée (${err.message}) — visuel d'origine conservé.`);
       return false;
     });
 }
+
+// Préchargement Pexels lancé au plus tôt (le script est en fin de <body>, les
+// cibles existent déjà) : le skeleton s'applique avant le premier paint, évitant
+// tout flash du visuel local avant l'image Pexels.
+loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
+document.querySelectorAll('[data-pexels-query]').forEach(el =>
+  loadGymPhoto(el.dataset.pexelsQuery, el)
+);
 
 Object.assign(window, {
   switchLang,
@@ -346,11 +364,4 @@ document.addEventListener('DOMContentLoaded', () => {
     reveals.forEach(el => el.classList.add('visible'));
   }
 
-  loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
-
-  // Photos Pexels (cartes Formules, miniatures Vidéos, fond CTA) via data-attribute
-  // sur des conteneurs background — chaque échec est silencieux (fond d'origine conservé).
-  document.querySelectorAll('[data-pexels-query]').forEach(el =>
-    loadGymPhoto(el.dataset.pexelsQuery, el)
-  );
 });
