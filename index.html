@@ -87,64 +87,6 @@
   </div>
 </section>
 
-<section id="objectives" class="objectives-section" aria-label="Nos formats de coaching">
-  <div class="objectives-shell box-card">
-    <div class="objectives-header">
-      <div>
-        <p class="objectives-eyebrow" data-i18n="programsEyebrow">QUEL EST TON OBJECTIF ?</p>
-        <h2 data-i18n="objectivesTitle">Un coaching pensé pour ton objectif</h2>
-      </div>
-      <a href="#plans" class="btn btn-outline-green" data-i18n="objectivesViewAll">Voir tout</a>
-    </div>
-
-    <div class="objectives-grid">
-    <article class="objective-card">
-      <span class="objective-index" aria-hidden="true">01</span>
-      <h3 class="objective-card-title" data-i18n="programMasseTitle">Prise de masse</h3>
-      <p class="objective-card-desc" data-i18n="programMasseDesc">Construire du muscle, solidement.</p>
-      <ul class="objective-card-list">
-        <li data-i18n="programMasseBenefit1">Volume et charge progressifs</li>
-        <li data-i18n="programMasseBenefit2">Suivi nutritionnel adapté</li>
-        <li data-i18n="programMasseBenefit3">Technique et prévention blessure</li>
-      </ul>
-    </article>
-
-    <article class="objective-card">
-      <span class="objective-index" aria-hidden="true">02</span>
-      <h3 class="objective-card-title" data-i18n="programPerteTitle">Perte de poids</h3>
-      <p class="objective-card-desc" data-i18n="programPerteDesc">Perdre du gras, garder le muscle.</p>
-      <ul class="objective-card-list">
-        <li data-i18n="programPerteBenefit1">Déficit calorique maîtrisé</li>
-        <li data-i18n="programPerteBenefit2">Combinaison force et cardio</li>
-        <li data-i18n="programPerteBenefit3">Suivi de la composition corporelle</li>
-      </ul>
-    </article>
-
-    <article class="objective-card">
-      <span class="objective-index" aria-hidden="true">03</span>
-      <h3 class="objective-card-title" data-i18n="programCardioTitle">Cardio</h3>
-      <p class="objective-card-desc" data-i18n="programCardioDesc">Endurance, souffle, énergie.</p>
-      <ul class="objective-card-list">
-        <li data-i18n="programCardioBenefit1">Amélioration du souffle</li>
-        <li data-i18n="programCardioBenefit2">Endurance progressive</li>
-        <li data-i18n="programCardioBenefit3">Suivi du rythme cardiaque</li>
-      </ul>
-    </article>
-
-    <article class="objective-card">
-      <span class="objective-index" aria-hidden="true">04</span>
-      <h3 class="objective-card-title" data-i18n="programPersoTitle">Personnalisé</h3>
-      <p class="objective-card-desc" data-i18n="programPersoDesc">Ton objectif ne rentre dans aucune case.</p>
-      <ul class="objective-card-list">
-        <li data-i18n="programPersoBenefit1">Bilan initial complet</li>
-        <li data-i18n="programPersoBenefit2">Programme évolutif</li>
-        <li data-i18n="programPersoBenefit3">Ajustements réguliers avec le coach</li>
-      </ul>
-    </article>
-    </div>
-  </div>
-</section>
-
 <!-- COACH -->
 <section id="coach" class="about-coach" aria-labelledby="coach-title">
   <div class="about-coach-inner">
@@ -185,68 +127,64 @@
 
 
 <!-- FORMULES -->
-<section id="plans" class="plans-section" aria-labelledby="plans-title">
-  <div class="plans-inner">
-    <header class="plans-heading">
-      <p class="section-kicker" data-i18n="plansEyebrow">FORMULES</p>
-      <h2 id="plans-title" data-i18n="plansTitle">Choisis ton niveau d’accompagnement.</h2>
-      <p data-i18n="plansIntro">Des formules claires, sans prix caché affiché en ligne : on commence par parler de ton objectif.</p>
-    </header>
+<section id="formules" class="formules-section" aria-labelledby="formules-title">
+  <header class="formules-heading">
+    <p class="section-kicker" data-i18n="plansEyebrow">FORMULES</p>
+    <h2 id="formules-title" data-i18n="objectivesTitle">Un coaching pensé pour ton objectif</h2>
+  </header>
 
-    <div class="plans-grid">
-      <article class="plan-card box-card reveal is-open">
-        <button class="plan-toggle" type="button" aria-expanded="true" aria-controls="plan-starter-panel">
-          <span class="plan-icon" aria-hidden="true">01</span>
-          <span><small data-i18n="planLevelEssential">L’essentiel</small><strong>Starter</strong></span>
-          <span class="plan-toggle-mark" aria-hidden="true">+</span>
-        </button>
-        <div class="plan-panel" id="plan-starter-panel">
-          <p data-i18n="planStarterText">Une structure solide pour commencer avec les bons repères.</p>
-          <ul>
-            <li data-i18n="planStarter1">Bilan initial complet</li>
-            <li data-i18n="planStarter2">Plan personnalisé sur 4 semaines</li>
-            <li data-i18n="planStarter3">Suivi hebdomadaire</li>
-          </ul>
-          <button type="button" class="btn btn-outline-green" onclick="openContactPopup()" data-i18n="planCta">Choisir cette formule</button>
-        </div>
-      </article>
+  <div class="formules-grid">
+    <article class="formule-card reveal">
+      <div class="formule-photo" data-pexels-query="cardio training gym professional" role="img" aria-label="Entraînement cardio en salle">
+        <span class="formule-number" aria-hidden="true">01</span>
+      </div>
+      <div class="formule-body">
+        <span class="formule-ideal" data-i18n="formule1Ideal">Idéal pour : perdre du gras</span>
+        <h3 class="formule-title" data-i18n="programPerteTitle">Perte de poids</h3>
+        <p class="formule-desc" data-i18n="programPerteDesc">Perdre du gras, garder le muscle.</p>
+        <ul class="formule-features">
+          <li data-i18n="programPerteBenefit1">Déficit calorique maîtrisé</li>
+          <li data-i18n="programPerteBenefit2">Combinaison force et cardio</li>
+          <li data-i18n="programPerteBenefit3">Suivi de la composition corporelle</li>
+        </ul>
+        <button type="button" class="formule-cta" onclick="openContactPopup()" data-i18n="planCta">Choisir cette formule</button>
+      </div>
+    </article>
 
-      <article class="plan-card plan-card--featured box-card reveal">
-        <span class="plan-popular" data-i18n="planPopular">Le plus populaire</span>
-        <button class="plan-toggle" type="button" aria-expanded="true" aria-controls="plan-elite-panel">
-          <span class="plan-icon" aria-hidden="true">02</span>
-          <span><small data-i18n="planLevelComplete">L’accompagnement complet</small><strong>Elite</strong></span>
-          <span class="plan-toggle-mark" aria-hidden="true">+</span>
-        </button>
-        <div class="plan-panel" id="plan-elite-panel">
-          <p data-i18n="planEliteText">Le suivi le plus complet pour accélérer et tenir tes résultats.</p>
-          <ul>
-            <li data-i18n="planElite1">Programme 100 % personnalisé</li>
-            <li data-i18n="planElite2">Suivi nutritionnel adapté</li>
-            <li data-i18n="planElite3">Ajustements continus</li>
-            <li data-i18n="planElite4">Support prioritaire</li>
-          </ul>
-          <button type="button" class="btn btn-primary" onclick="openContactPopup()" data-i18n="planCta">Choisir cette formule</button>
-        </div>
-      </article>
+    <article class="formule-card formule-card--featured reveal">
+      <div class="formule-photo" data-pexels-query="weightlifting barbell gym professional" role="img" aria-label="Entraînement de force à la barre">
+        <span class="formule-number" aria-hidden="true">02</span>
+        <span class="formule-badge" data-i18n="planPopular">Le plus populaire</span>
+      </div>
+      <div class="formule-body">
+        <span class="formule-ideal" data-i18n="formule2Ideal">Idéal pour : construire du muscle</span>
+        <h3 class="formule-title" data-i18n="programMasseTitle">Prise de masse</h3>
+        <p class="formule-desc" data-i18n="programMasseDesc">Construire du muscle, solidement.</p>
+        <ul class="formule-features">
+          <li data-i18n="programMasseBenefit1">Volume et charge progressifs</li>
+          <li data-i18n="programMasseBenefit2">Suivi nutritionnel adapté</li>
+          <li data-i18n="programMasseBenefit3">Technique et prévention blessure</li>
+        </ul>
+        <button type="button" class="formule-cta" onclick="openContactPopup()" data-i18n="planCta">Choisir cette formule</button>
+      </div>
+    </article>
 
-      <article class="plan-card box-card reveal">
-        <button class="plan-toggle" type="button" aria-expanded="true" aria-controls="plan-online-panel">
-          <span class="plan-icon" aria-hidden="true">03</span>
-          <span><small data-i18n="planLevelFlexible">Le plus flexible</small><strong data-i18n="planOnlineTitle">En ligne</strong></span>
-          <span class="plan-toggle-mark" aria-hidden="true">+</span>
-        </button>
-        <div class="plan-panel" id="plan-online-panel">
-          <p data-i18n="planOnlineText">La méthode X-Zone où que tu sois, avec un suivi à distance régulier.</p>
-          <ul>
-            <li data-i18n="planOnline1">Plan d’entraînement à distance</li>
-            <li data-i18n="planOnline2">Retour vidéo hebdomadaire</li>
-            <li data-i18n="planOnline3">Horaires entièrement flexibles</li>
-          </ul>
-          <button type="button" class="btn btn-outline-green" onclick="openContactPopup()" data-i18n="planCta">Choisir cette formule</button>
-        </div>
-      </article>
-    </div>
+    <article class="formule-card reveal">
+      <div class="formule-photo" data-pexels-query="personal trainer coaching gym" role="img" aria-label="Coaching personnalisé en salle">
+        <span class="formule-number" aria-hidden="true">03</span>
+      </div>
+      <div class="formule-body">
+        <span class="formule-ideal" data-i18n="formule3Ideal">Idéal pour : un objectif sur mesure</span>
+        <h3 class="formule-title" data-i18n="programPersoTitle">Personnalisé</h3>
+        <p class="formule-desc" data-i18n="programPersoDesc">Ton objectif ne rentre dans aucune case.</p>
+        <ul class="formule-features">
+          <li data-i18n="programPersoBenefit1">Bilan initial complet</li>
+          <li data-i18n="programPersoBenefit2">Programme évolutif</li>
+          <li data-i18n="programPersoBenefit3">Ajustements réguliers avec le coach</li>
+        </ul>
+        <button type="button" class="formule-cta" onclick="openContactPopup()" data-i18n="planCta">Choisir cette formule</button>
+      </div>
+    </article>
   </div>
 </section>
 

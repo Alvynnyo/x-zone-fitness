@@ -183,13 +183,15 @@ function initPlanAccordions() {
   window.addEventListener('resize', syncForViewport, { passive: true });
 }
 
-// Charge une photo Pexels via la Netlify Function et l'applique en fond.
+// Charge une photo Pexels via la Netlify Function et l'applique sur la cible.
+// `target` accepte un sélecteur CSS OU un élément. Pour un <img>, on remplace
+// son `src` ; pour tout autre élément, on pose un `background-image`.
 // Toute erreur (réseau, status != 200, aucune photo, image illisible) est silencieuse :
-// on ne touche jamais au style existant, le fond CSS d'origine reste en place.
-function loadGymPhoto(query, targetSelector) {
-  const target = document.querySelector(targetSelector);
-  if (!target) {
-    console.warn(`[pexels] cible introuvable: ${targetSelector}`);
+// on ne touche jamais au visuel existant — le src local / le fond CSS d'origine reste en place.
+function loadGymPhoto(query, target) {
+  const el = typeof target === 'string' ? document.querySelector(target) : target;
+  if (!el) {
+    console.warn(`[pexels] cible introuvable: ${target}`);
     return Promise.resolve(false);
   }
 
@@ -204,7 +206,7 @@ function loadGymPhoto(query, targetSelector) {
       const url = data?.photos?.[0]?.src?.large2x;
       if (!url) throw new Error('aucune photo retournée');
 
-      // On précharge : si l'URL Pexels échoue, on n'écrase pas le fond existant.
+      // On précharge : si l'URL Pexels échoue, on n'écrase jamais le visuel existant.
       return new Promise((resolve, reject) => {
         const img = new Image();
         img.onload = () => resolve(url);
@@ -213,14 +215,18 @@ function loadGymPhoto(query, targetSelector) {
       });
     })
     .then(url => {
-      target.style.backgroundImage = `url("${url}")`;
-      target.style.backgroundSize = 'cover';
-      target.style.backgroundPosition = 'center';
-      target.style.backgroundRepeat = 'no-repeat';
+      if (el.tagName === 'IMG') {
+        el.src = url;
+      } else {
+        el.style.backgroundImage = `url("${url}")`;
+        el.style.backgroundSize = 'cover';
+        el.style.backgroundPosition = 'center';
+        el.style.backgroundRepeat = 'no-repeat';
+      }
       return true;
     })
     .catch(err => {
-      console.warn(`[pexels] "${query}" non chargée (${err.message}) — fond d'origine conservé.`);
+      console.warn(`[pexels] "${query}" non chargée (${err.message}) — visuel d'origine conservé.`);
       return false;
     });
 }
@@ -341,4 +347,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
   loadGymPhoto('gym equipment dramatic lighting', '#gallery-teaser-visual');
+
+  // Photos Pexels des cartes Formules (conteneurs background, requête via data-attribute)
+  document.querySelectorAll('[data-pexels-query]').forEach(el =>
+    loadGymPhoto(el.dataset.pexelsQuery, el)
+  );
 });
