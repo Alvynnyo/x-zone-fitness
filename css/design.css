@@ -1,17 +1,22 @@
 /* X-Zone Fitness — couche de mise en page du wireframe validé */
 :root {
-  --green: #22c55e;
-  --green-dark: #16a34a;
-  --green-soft: #86efac;
-  --bg-dark: #0b1410;
-  --bg-dark-2: #121e18;
+  /* Palette de marque : vert forêt #005400 (accent), blanc, gris */
+  --green: #005400;
+  --green-dark: #003d00;
+  --green-soft: #e6f0e6;
+  --bg-dark: #06170d;
+  --bg-dark-2: #0b2113;
   --off-white: #f4f6f1;
   --white: #ffffff;
   --text: #101612;
   --text-muted: #667068;
-  --radius-card: 16px;
-  --radius-pill: 40px;
-  --shadow-soft: 0 12px 32px rgba(16, 22, 18, 0.08);
+  /* DA template de référence : coins droits + ombres dures décalées (aucun flou) */
+  --radius-card: 4px;
+  --radius-pill: 999px;
+  --shadow-hard: 8px 8px 0 rgba(0, 0, 0, 0.15);
+  --shadow-hard-sm: 5px 5px 0 rgba(0, 0, 0, 0.12);
+  --shadow-soft: var(--shadow-hard-sm);
+  --font-display: 'Fraunces', serif;
   --section-inline: clamp(1rem, 4vw, 3rem);
   --section-block: clamp(4.5rem, 8vw, 7.5rem);
   --content-max: 1240px;
@@ -25,13 +30,76 @@ body {
 
 .box-card {
   border-radius: var(--radius-card);
-  box-shadow: var(--shadow-soft);
+  box-shadow: var(--shadow-hard);
+}
+
+/* Titres en serif Fraunces (DA de référence) */
+h1, h2, h3, h4,
+.hero-title,
+#hero-logo,
+#footer-brand {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
 }
 
 .btn,
 .nav-cta,
 #contact-submit {
   border-radius: var(--radius-pill);
+}
+
+/* 01 — Navigation (coins droits sur la barre, actif + CTA en pill) */
+#hero-nav {
+  border-radius: var(--radius-card);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-hard-sm);
+  background: var(--white);
+}
+
+#hero-logo {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--text);
+  letter-spacing: 0;
+}
+
+#hero-links {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  gap: 4px;
+}
+
+@media (max-width: 768px) {
+  #hero-links {
+    position: static;
+    transform: none;
+  }
+  #hero-nav .nav-cta {
+    display: none;
+  }
+}
+
+#hero-links a {
+  border-radius: var(--radius-pill);
+  color: var(--text-muted);
+  font-family: 'Work Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  padding: 8px 16px;
+}
+
+#hero-links a:hover {
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+#hero-links a.active {
+  color: var(--white);
+  background: var(--green);
 }
 
 #hero-nav .nav-cta {
@@ -41,8 +109,10 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--white);
-  background: var(--green-dark);
-  border: 1px solid var(--green-dark);
+  background: var(--green);
+  border: 1px solid var(--green);
+  font-weight: 700;
+  letter-spacing: 0.02em;
 }
 
 #hero-nav .nav-cta::after {
@@ -52,8 +122,8 @@ body {
 #hero-nav .nav-cta:hover,
 #hero-nav .nav-cta:focus-visible {
   color: var(--white);
-  background: var(--bg-dark);
-  border-color: var(--bg-dark);
+  background: var(--green-dark);
+  border-color: var(--green-dark);
 }
 
 /* 02 — Hero */

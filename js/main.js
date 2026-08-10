@@ -82,7 +82,7 @@ function openVideoPopup() {
 }
 
 function updateActiveNavLink() {
-  const sections = ['method', 'coach', 'testimonials'];
+  const sections = ['formules', 'videos'];
   const links = document.querySelectorAll('#hero-links a');
   let current = '';
 
@@ -104,7 +104,7 @@ function updateActiveNavLink() {
       link.classList.add('active');
     }
 
-    if (!current && (href === '#' || href === 'index.html')) {
+    if (!current && (href === '#hero' || href === '#' || href === 'index.html')) {
       link.classList.add('active');
     }
   });
