@@ -126,19 +126,19 @@ h1, h2, h3, h4,
   border-color: var(--green-dark);
 }
 
-/* 02 — Hero */
+/* 02 — Hero (plein écran, pas de card) */
 #hero {
   min-height: 100svh;
-  padding: 6rem var(--section-inline) var(--section-inline);
+  padding: 0;
   background: var(--off-white);
 }
 
 #hero .hero-card {
-  min-height: calc(100svh - 7.5rem);
-  max-width: var(--content-max);
-  margin: 0 auto;
-  border-radius: 24px;
-  box-shadow: var(--shadow-soft);
+  min-height: 100svh;
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
 }
 
 #hero .hero-card::after {
@@ -215,16 +215,16 @@ h1, h2, h3, h4,
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1rem;
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: var(--radius-pill);
   color: var(--white);
-  background: rgba(11, 20, 16, 0.72);
-  backdrop-filter: blur(10px);
+  background: rgba(6, 23, 13, 0.94);
+  box-shadow: var(--shadow-hard-sm);
 }
 
 .hero-stat-pill strong {
   color: var(--green-soft);
-  font-family: var(--font-heading);
+  font-family: var(--font-display);
   font-size: 1.55rem;
   line-height: 1;
 }
@@ -495,88 +495,6 @@ h1, h2, h3, h4,
   place-items: center;
   border: 1px solid rgba(16, 22, 18, 0.18);
   border-radius: 50%;
-}
-
-/* 05 — Stats / Coach */
-.stats-band {
-  padding: var(--section-block) var(--section-inline);
-  color: var(--white);
-  background: #07110b;
-  border-top: 1px solid rgba(134, 239, 172, 0.12);
-}
-
-.stats-band-inner {
-  display: grid;
-  grid-template-columns: 1.3fr 0.7fr;
-  gap: clamp(2rem, 6vw, 6rem);
-  max-width: var(--content-max);
-  margin: 0 auto;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: end;
-}
-
-.stat-block {
-  display: grid;
-  align-content: end;
-  min-height: 230px;
-  padding: 1.5rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.14);
-}
-
-.stat-block strong {
-  color: var(--green-soft);
-  font-family: var(--font-heading);
-  font-size: clamp(4rem, 7vw, 7rem);
-  font-weight: 400;
-  line-height: 0.8;
-}
-
-.stat-block span {
-  max-width: 130px;
-  margin-top: 1rem;
-  color: rgba(255, 255, 255, 0.64);
-  font-size: 0.76rem;
-  font-weight: 700;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-.stats-copy {
-  align-self: center;
-}
-
-.stats-copy h2 {
-  margin: 0.75rem 0 1rem;
-  font-size: clamp(2.5rem, 5vw, 4.8rem);
-}
-
-.stats-copy > p:last-child {
-  color: rgba(255, 255, 255, 0.64);
-}
-
-.skills-row {
-  grid-column: 1 / -1;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.65rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.skills-row .pill {
-  padding: 0.7rem 1rem;
-  border: 1px solid rgba(134, 239, 172, 0.28);
-  border-radius: var(--radius-pill);
-  color: var(--green-soft);
-  background: rgba(34, 197, 94, 0.06);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
 }
 
 /* 06 — À propos */
@@ -1412,44 +1330,6 @@ h1, h2, h3, h4,
 
   .method-quote-footer {
     align-items: flex-end;
-  }
-
-  .stats-band {
-    padding: 4rem 0.75rem;
-  }
-
-  .stats-band-inner {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .stat-block {
-    grid-template-columns: 0.7fr 1fr;
-    align-items: end;
-    min-height: 0;
-    padding: 1.25rem 0;
-    border-left: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-  }
-
-  .stat-block strong {
-    font-size: 4.4rem;
-  }
-
-  .stat-block span {
-    margin-top: 0;
-  }
-
-  .stats-copy {
-    order: -1;
-  }
-
-  .skills-row {
-    gap: 0.5rem;
   }
 
   #coach.about-coach {
