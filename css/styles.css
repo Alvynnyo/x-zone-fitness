@@ -10,17 +10,13 @@
   --color-primary-hover: #003d00;
   --color-white: #ffffff;
   --color-black: var(--color-text);
-  --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-bg-strong: rgba(255, 255, 255, 0.74);
-  --glass-border: rgba(255, 255, 255, 0.6);
+  --surface: #ffffff;
+  --surface-alt: #fafafa;
+  --surface-border: rgba(0, 0, 0, 0.08);
   --radius-card: 28px;
   --radius-large: 32px;
-  --shadow-card:
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
-  --shadow-card-hover:
-    0 16px 44px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.88);
+  --shadow-card: 0 2px 12px rgba(0, 0, 0, 0.06);
+  --shadow-card-hover: 0 6px 20px rgba(0, 0, 0, 0.10);
   --transition: all 0.22s ease;
   --font-heading: 'Bebas Neue', Arial, sans-serif;
   --font-body: 'Work Sans', Arial, sans-serif;
@@ -120,34 +116,18 @@ h6 {
   margin-bottom: 12px;
 }
 
-/* === LIQUID GLASS === */
+/* === SURFACES / CARDS === */
 .box-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: #ffffff;
   border-radius: var(--radius-card);
   padding: 2rem;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: var(--shadow-card);
 }
 
 .box-card--on-image {
-  background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .box-card,
-  .box-card--on-image,
-  #hero-nav,
-  #gallery-nav,
-  .mobile-menu-drawer,
-  .gallery-item,
-  .video-card {
-    background: rgba(255, 255, 255, 0.92);
-  }
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 /* === BUTTONS === */
@@ -183,9 +163,7 @@ h6 {
 
 .btn-outline,
 .btn-outline-green {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #ffffff;
   color: var(--color-text);
   border: 1px solid rgba(0, 0, 0, 0.18);
 }
@@ -204,14 +182,10 @@ h6 {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.58);
-  backdrop-filter: blur(24px) saturate(180%);
-  -webkit-backdrop-filter: blur(24px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.72);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 26px;
-  box-shadow:
-    0 12px 40px rgba(0, 0, 0, 0.09),
-    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 #hero-nav {
@@ -226,11 +200,9 @@ h6 {
 }
 
 #hero-nav.scrolled {
-  background: rgba(255, 255, 255, 0.84);
-  border-color: rgba(255, 255, 255, 0.92);
-  box-shadow:
-    0 14px 46px rgba(0, 0, 0, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  background: #ffffff;
+  border-color: rgba(0, 0, 0, 0.10);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
 }
 
 #gallery-nav {
@@ -489,11 +461,9 @@ body.contact-open #gallery-nav {
   transform: translateX(100%);
   transition: transform 0.3s ease;
   overflow-y: auto;
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(24px) saturate(170%);
-  -webkit-backdrop-filter: blur(24px) saturate(170%);
-  border-left: 1px solid rgba(255, 255, 255, 0.78);
-  box-shadow: -18px 0 44px rgba(0, 0, 0, 0.14);
+  background: #ffffff;
+  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.10);
 }
 
 .mobile-menu-drawer.is-open {
@@ -523,7 +493,7 @@ body.contact-open #gallery-nav {
   justify-content: center;
   border-radius: 50%;
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.5);
+  background: #fafafa;
 }
 
 .mobile-menu-links {
@@ -618,12 +588,10 @@ body.contact-open #gallery-nav {
 }
 
 .objective-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: #ffffff;
   border-radius: var(--radius-card);
   padding: 1.75rem;
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: var(--shadow-card);
   min-height: 100%;
 }
@@ -692,8 +660,8 @@ body.contact-open #gallery-nav {
   text-transform: uppercase;
   padding: 10px 16px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.52);
-  border: 1px solid var(--glass-border);
+  background: #ffffff;
+  border: 1px solid var(--surface-border);
 }
 
 #coach-statement {
@@ -721,8 +689,8 @@ body.contact-open #gallery-nav {
   overflow: hidden;
   border-radius: var(--radius-card);
   padding: 0.55rem;
-  background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+  background: var(--surface);
+  border: 1px solid var(--surface-border);
   box-shadow: var(--shadow-card);
 }
 
@@ -790,7 +758,7 @@ body.contact-open #gallery-nav {
   padding: 9px 20px;
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 0.14);
-  background: rgba(255, 255, 255, 0.46);
+  background: #ffffff;
   color: var(--color-text-secondary);
   font-size: 13px;
   font-weight: 700;
@@ -825,11 +793,9 @@ body.contact-open #gallery-nav {
   color: var(--color-text-secondary);
   font-size: 15px;
   letter-spacing: 0.02em;
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  background: #ffffff;
   border-radius: var(--radius-card);
-  border: 1px solid var(--glass-border);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: var(--shadow-card);
 }
 
@@ -837,10 +803,8 @@ body.contact-open #gallery-nav {
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  background: var(--glass-bg);
-  backdrop-filter: blur(18px) saturate(160%);
-  -webkit-backdrop-filter: blur(18px) saturate(160%);
-  border: 1px solid var(--glass-border);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: var(--radius-card);
   box-shadow: var(--shadow-card);
 }
@@ -916,8 +880,6 @@ body.contact-open #gallery-nav {
   justify-content: center;
   padding: 20px;
   background: rgba(0, 0, 0, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s;
@@ -969,9 +931,7 @@ body.contact-open #gallery-nav {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.72);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -1011,7 +971,7 @@ body.contact-open #gallery-nav {
   justify-content: center;
   border-radius: 50%;
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.68);
+  background: #ffffff;
   border: 1px solid var(--color-border);
   transition: var(--transition);
 }
@@ -1141,7 +1101,7 @@ body.contact-open #gallery-nav {
   padding: 8px 12px;
   border-radius: 999px;
   border: 1px solid var(--color-border);
-  background: rgba(255, 255, 255, 0.5);
+  background: #fafafa;
   color: var(--color-text);
   font-size: 13px;
   font-weight: 600;
@@ -1211,7 +1171,7 @@ body.contact-open #gallery-nav {
 #coach-ticker {
   overflow: hidden;
   padding: 16px 0;
-  background: rgba(255, 255, 255, 0.5);
+  background: #fafafa;
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   white-space: nowrap;
@@ -1319,10 +1279,8 @@ body.contact-open #gallery-nav {
   cursor: pointer;
   border-radius: var(--radius-card);
   padding: 0.5rem;
-  background: var(--glass-bg);
-  backdrop-filter: blur(16px) saturate(160%);
-  -webkit-backdrop-filter: blur(16px) saturate(160%);
-  border: 1px solid var(--glass-border);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
   box-shadow: var(--shadow-card);
   transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
 }
@@ -1670,8 +1628,6 @@ body.contact-open #gallery-nav {
 
   .gallery-item {
     padding: 0.35rem;
-    backdrop-filter: blur(10px) saturate(150%);
-    -webkit-backdrop-filter: blur(10px) saturate(150%);
   }
 
   .gallery-item img,
