@@ -50,10 +50,11 @@ function closeContactPopup() {
 }
 
 function renderVideos(category = 'all') {
-  const grid = document.getElementById('videos-grid');
-  if (!grid) return;
-  const msg = window.i18n?.t('videosComingSoon') || 'Vidéos bientôt disponibles.';
-  grid.innerHTML = `<div class="videos-coming-soon">${msg}</div>`;
+  const cards = document.querySelectorAll('#videos-grid .video-card');
+  if (!cards.length) return;
+  cards.forEach(card => {
+    card.hidden = !(category === 'all' || card.dataset.category === category);
+  });
 }
 
 function openVideoPlayer(videoId) {
