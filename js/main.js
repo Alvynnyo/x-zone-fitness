@@ -267,10 +267,9 @@ function loadGymPhoto(query, target) {
     });
 }
 
-// Préchargement Pexels lancé au plus tôt (le script est en fin de <body>, les
-// cibles existent déjà) : le skeleton s'applique avant le premier paint, évitant
-// tout flash du visuel local avant l'image Pexels.
-loadGymPhoto('gym equipment dramatic lighting', '#gallery-header');
+// Fallback runtime Pexels (conservé pour d'éventuelles cibles [data-pexels-query]) :
+// désormais les visuels principaux sont des images locales (images/pexels/*) —
+// fiables hors-ligne, en local et en prod, sans dépendre de la Netlify Function.
 document.querySelectorAll('[data-pexels-query]').forEach(el =>
   loadGymPhoto(el.dataset.pexelsQuery, el)
 );
