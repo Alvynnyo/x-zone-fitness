@@ -124,6 +124,31 @@ function updateHeroNavOnScroll() {
   updateActiveNavLink();
 }
 
+// Pager témoignages : 2 cartes visibles (1 sur mobile), défilement par les flèches.
+function initTestimonialsPager() {
+  const pair = document.getElementById('testimonials-pair');
+  if (!pair) return;
+  const cards = Array.from(pair.querySelectorAll('.testimonial-card'));
+  const prev = document.querySelector('[data-testi-prev]');
+  const next = document.querySelector('[data-testi-next]');
+  if (cards.length <= 1 || !prev || !next) return;
+
+  const total = cards.length;
+  let start = 0;
+
+  const render = () => {
+    const perView = window.matchMedia('(max-width: 760px)').matches ? 1 : 2;
+    const visible = new Set();
+    for (let i = 0; i < perView; i++) visible.add((start + i) % total);
+    cards.forEach((card, i) => { card.hidden = !visible.has(i); });
+  };
+
+  prev.addEventListener('click', () => { start = (start - 1 + total) % total; render(); });
+  next.addEventListener('click', () => { start = (start + 1) % total; render(); });
+  window.addEventListener('resize', render, { passive: true });
+  render();
+}
+
 function initTestimonialsCarousel() {
   const carousel = document.querySelector('.testimonial-carousel');
   const slides = Array.from(document.querySelectorAll('[data-testimonial-slide]'));
@@ -327,8 +352,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
   renderVideos();
-  initTestimonialsCarousel();
-  initPlanAccordions();
+  initTestimonialsPager();
 
   // Masque la vignette vidéo tant qu'aucune vidéo n'est disponible (évite un clic sans effet).
   // Se réaffiche automatiquement dès que `videos` contient au moins une entrée.
