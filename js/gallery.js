@@ -1,13 +1,5 @@
-const galleryItems = [
-  { src: 'images/Accueil.png', category: 'training', caption: 'Séance force — Épaules' },
-  { src: 'images/Accueil.png', category: 'training', caption: 'Circuit cardio' },
-  { src: 'images/Accueil.png', category: 'coaching', caption: 'Session coaching client' },
-  { src: 'images/Accueil.png', category: 'coaching', caption: 'Coaching personnalisé' },
-  { src: 'images/Accueil.png', category: 'results', caption: 'Résultat — 3 mois' },
-  { src: 'images/Accueil.png', category: 'results', caption: 'Transformation complète' },
-  { src: 'images/Accueil.png', category: 'training', caption: 'Deadlift — Technique' },
-  { src: 'images/Accueil.png', category: 'coaching', caption: 'Suivi hebdomadaire' },
-];
+// Les prochaines photos seront ajoutées depuis le dossier images/galerie/.
+const galleryItems = [];
 
 let currentItems = [...galleryItems];
 let lightboxIndex = 0;
@@ -15,11 +7,23 @@ let lightboxIndex = 0;
 function renderGallery(filter = 'all') {
   const grid = document.getElementById('gallery-grid');
   if (!grid) return;
+  const filters = document.getElementById('gallery-filters');
+  if (filters) filters.hidden = galleryItems.length === 0;
   currentItems = filter === 'all' ? galleryItems : galleryItems.filter(i => i.category === filter);
+
+  if (currentItems.length === 0) {
+    grid.innerHTML = `
+      <div class="gallery-empty" role="status">
+        <h3>Les photos arrivent bientôt.</h3>
+        <p>De nouvelles images seront ajoutées prochainement.</p>
+      </div>
+    `;
+    return;
+  }
+
   grid.innerHTML = currentItems.map((item, idx) => `
     <div class="gallery-item" onclick="openLightbox(${idx})">
-      <img src="${item.src}" alt="${item.caption}" loading="lazy"
-           onerror="this.src='images/Accueil.png'">
+      <img src="${item.src}" alt="${item.caption}" loading="lazy">
       <div class="gallery-item-overlay">
         <span class="gallery-item-caption">${item.caption}</span>
       </div>
@@ -54,6 +58,7 @@ function closeLightbox() {
 }
 
 function lightboxNav(dir) {
+  if (currentItems.length === 0) return;
   lightboxIndex = (lightboxIndex + dir + currentItems.length) % currentItems.length;
   renderLightboxMedia();
 }
@@ -63,8 +68,7 @@ function renderLightboxMedia() {
   const media = document.getElementById('lightbox-media');
   const caption = document.getElementById('lightbox-caption');
   if (!media || !item) return;
-  media.innerHTML = `<img src="${item.src}" alt="${item.caption}"
-    onerror="this.src='images/Accueil.png'">`;
+  media.innerHTML = `<img src="${item.src}" alt="${item.caption}">`;
   if (caption) caption.textContent = item.caption;
 }
 
