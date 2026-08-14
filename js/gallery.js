@@ -1,12 +1,12 @@
 const galleryItems = [
-  { src: 'images/placeholder-coach.jpg', category: 'training', caption: 'Séance force — Épaules' },
-  { src: 'images/placeholder-coach.jpg', category: 'training', caption: 'Circuit cardio' },
-  { src: 'images/placeholder-coach.jpg', category: 'coaching', caption: 'Session coaching client' },
-  { src: 'images/placeholder-coach.jpg', category: 'coaching', caption: 'Coaching personnalisé' },
-  { src: 'images/placeholder-coach.jpg', category: 'results', caption: 'Résultat — 3 mois' },
-  { src: 'images/placeholder-coach.jpg', category: 'results', caption: 'Transformation complète' },
-  { src: 'images/placeholder-coach.jpg', category: 'training', caption: 'Deadlift — Technique' },
-  { src: 'images/placeholder-coach.jpg', category: 'coaching', caption: 'Suivi hebdomadaire' },
+  { src: 'images/Accueil.png', category: 'training', caption: 'Séance force — Épaules' },
+  { src: 'images/Accueil.png', category: 'training', caption: 'Circuit cardio' },
+  { src: 'images/Accueil.png', category: 'coaching', caption: 'Session coaching client' },
+  { src: 'images/Accueil.png', category: 'coaching', caption: 'Coaching personnalisé' },
+  { src: 'images/Accueil.png', category: 'results', caption: 'Résultat — 3 mois' },
+  { src: 'images/Accueil.png', category: 'results', caption: 'Transformation complète' },
+  { src: 'images/Accueil.png', category: 'training', caption: 'Deadlift — Technique' },
+  { src: 'images/Accueil.png', category: 'coaching', caption: 'Suivi hebdomadaire' },
 ];
 
 let currentItems = [...galleryItems];
@@ -19,7 +19,7 @@ function renderGallery(filter = 'all') {
   grid.innerHTML = currentItems.map((item, idx) => `
     <div class="gallery-item" onclick="openLightbox(${idx})">
       <img src="${item.src}" alt="${item.caption}" loading="lazy"
-           onerror="this.src='images/placeholder-coach.jpg'">
+           onerror="this.src='images/Accueil.png'">
       <div class="gallery-item-overlay">
         <span class="gallery-item-caption">${item.caption}</span>
       </div>
@@ -64,7 +64,7 @@ function renderLightboxMedia() {
   const caption = document.getElementById('lightbox-caption');
   if (!media || !item) return;
   media.innerHTML = `<img src="${item.src}" alt="${item.caption}"
-    onerror="this.src='images/placeholder-coach.jpg'">`;
+    onerror="this.src='images/Accueil.png'">`;
   if (caption) caption.textContent = item.caption;
 }
 

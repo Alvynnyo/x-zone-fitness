@@ -4,185 +4,150 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:,">
-  <title>Galerie — X-Zone Fitness</title>
-  <meta name="description" content="Galerie de Samuel — Coach sportif certifié à Montréal. Séances d'entraînement, moments de coaching et résultats réels.">
-  <meta property="og:title" content="Galerie — X-Zone Fitness">
-  <meta property="og:description" content="Séances d'entraînement, coaching et résultats réels avec Samuel, coach certifié à Montréal.">
-  <meta property="og:image" content="images/hero-flatlay.jpg">
-  <meta property="og:url" content="https://xzonefitness.netlify.app/galerie.html">
+  <title>Galerie | X-Zone Fitness</title>
+  <meta name="description" content="Découvre les séances et moments de coaching avec Samuel chez X-Zone Fitness à Montréal.">
+  <meta property="og:title" content="Galerie | X-Zone Fitness">
+  <meta property="og:description" content="Entraînements et coaching personnel avec Samuel à Montréal.">
+  <meta property="og:image" content="images/Accueil.png">
+  <meta property="og:url" content="https://xzonefitness.ca/galerie.html">
   <meta property="og:type" content="website">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Fraunces:wght@600;700;900&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/design.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/home.css">
 </head>
-<body class="dark-page">
-
-  <nav id="gallery-nav">
-    <a href="index.html" id="gallery-nav-logo">X-ZONE FITNESS</a>
-    <div id="gallery-nav-right">
-      <a href="index.html#hero" data-i18n="navHome">Accueil</a>
-      <a href="index.html#formules" data-i18n="navFormules">Formules</a>
-      <a href="index.html#videos" data-i18n="navVideos">Vidéos</a>
-      <a href="galerie.html" class="active" data-i18n="navGalerie">Galerie</a>
-    </div>
-    <a href="javascript:void(0)" class="nav-cta" onclick="openContactPopup(); return false;" data-i18n="navJoin">Rejoignez-nous</a>
-    <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <header id="gallery-header" style="background-image:url('images/pexels/gallery-header.jpg');background-size:cover;background-position:center;">
-    <div id="gallery-header-content" class="box-card">
-      <div class="section-eyebrow" data-i18n="galleryEyebrow">SAMUEL EN ACTION</div>
-      <h1 id="gallery-header-title" data-i18n="galleryTitle">GALERIE</h1>
-      <p id="gallery-header-sub" data-i18n="gallerySubtitle">Séances d'entraînement, moments de coaching et résultats réels.</p>
-    </div>
+<body class="gallery-page">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="brand" href="index.html#accueil" aria-label="X-Zone Fitness — Accueil">X-Zone Fitness</a>
+      <div class="desktop-nav">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#objectifs">Objectifs</a>
+        <a href="galerie.html" aria-current="page">Galerie</a>
+      </div>
+      <button class="nav-cta" type="button" data-contact-trigger>Réserver un call</button>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
   </header>
 
-  <div id="gallery-filters" class="box-card">
-    <button class="gallery-filter active" data-filter="all" data-i18n="filterAll">Tout</button>
-    <button class="gallery-filter" data-filter="training" data-i18n="filterTraining">Entraînement</button>
-    <button class="gallery-filter" data-filter="coaching" data-i18n="filterCoaching">Coaching</button>
-    <button class="gallery-filter" data-filter="results" data-i18n="filterResults">Résultats</button>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-top">
+      <span class="brand">X-Zone Fitness</span>
+      <button class="menu-close" type="button" aria-label="Fermer le menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <nav class="mobile-menu-links" aria-label="Navigation mobile">
+      <a href="index.html#accueil">Accueil</a>
+      <a href="index.html#objectifs">Objectifs</a>
+      <a href="galerie.html" aria-current="page">Galerie</a>
+      <button type="button" data-contact-trigger>Réserver un call</button>
+    </nav>
   </div>
 
-  <div id="gallery-grid"></div>
+  <main class="gallery-main">
+    <header class="gallery-hero">
+      <div class="gallery-hero-card">
+        <span class="eyebrow">Dans la zone</span>
+        <h1>Galerie</h1>
+        <p>Les séances, le coaching et les progrès — sans mise en scène.</p>
+      </div>
+    </header>
 
-  <div id="gallery-lightbox">
-    <button id="lightbox-close" onclick="closeLightbox()" aria-label="Fermer">
-      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-      </svg>
+    <section class="gallery-content" aria-labelledby="gallery-title">
+      <div class="gallery-heading">
+        <div>
+          <span class="eyebrow">Samuel en action</span>
+          <h2 id="gallery-title">Le travail réel.</h2>
+        </div>
+        <div id="gallery-filters" class="gallery-filters" aria-label="Filtrer la galerie">
+          <button class="gallery-filter active" type="button" data-filter="all">Tout</button>
+          <button class="gallery-filter" type="button" data-filter="training">Entraînement</button>
+          <button class="gallery-filter" type="button" data-filter="coaching">Coaching</button>
+          <button class="gallery-filter" type="button" data-filter="results">Résultats</button>
+        </div>
+      </div>
+      <div id="gallery-grid" class="gallery-grid"></div>
+    </section>
+  </main>
+
+  <div id="gallery-lightbox" class="gallery-lightbox" aria-label="Aperçu de l’image">
+    <button id="lightbox-close" type="button" onclick="closeLightbox()" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
     </button>
-    <button id="lightbox-prev" onclick="lightboxNav(-1)" aria-label="Précédent">&#8249;</button>
+    <button id="lightbox-prev" type="button" onclick="lightboxNav(-1)" aria-label="Image précédente">‹</button>
     <div id="lightbox-media"></div>
-    <button id="lightbox-next" onclick="lightboxNav(1)" aria-label="Suivant">&#8250;</button>
+    <button id="lightbox-next" type="button" onclick="lightboxNav(1)" aria-label="Image suivante">›</button>
     <div id="lightbox-caption"></div>
   </div>
 
-  <div id="contact-overlay" onclick="closeContactPopup()">
-    <div id="contact-popup" class="box-card" onclick="event.stopPropagation()">
-      <button id="contact-close" onclick="closeContactPopup()" aria-label="Fermer le formulaire">
-        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-      </button>
-
-      <div id="contact-left">
-        <div id="contact-left-label" data-i18n="contactIntroLabel">PRÊT À COMMENCER ?</div>
-        <h2 id="contact-left-title" data-i18n="contactIntroTitle">PARLONS DE VOS OBJECTIFS</h2>
-        <div id="contact-left-info">
-          <div class="contact-info-block">
-            <span class="contact-info-name">SAMUEL</span>
-            <span class="contact-info-role" data-i18n="coachLabel">Coach Personnel</span>
-            <a href="mailto:Samcrotv@hotmail.com" class="contact-info-detail">Samcrotv@hotmail.com</a>
-            <a href="tel:+14386001894" class="contact-info-detail">+1 (438) 600-1894</a>
-            <span class="contact-info-detail">Montréal et les environs</span>
-          </div>
-        </div>
+  <footer class="site-footer gallery-footer">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <a class="brand brand-light" href="index.html#accueil">X-Zone Fitness</a>
+        <p>Coaching personnel · Montréal</p>
       </div>
-
-      <div id="contact-right">
-        <form id="contactForm">
-          <div class="contact-field">
-            <label data-i18n="formName">Nom</label>
-            <input type="text" name="name" required placeholder="Jean Tremblay">
-          </div>
-          <div class="contact-field">
-            <label data-i18n="formEmail">Email</label>
-            <input type="email" name="email" required placeholder="votre@email.com">
-          </div>
-          <div class="contact-field">
-            <label data-i18n="formPhone">Téléphone</label>
-            <input type="tel" name="phone" placeholder="+1 (514) 000-0000">
-          </div>
-          <div class="contact-field">
-            <label data-i18n="formProgram">Programme</label>
-            <select name="program" class="program-proxy" hidden aria-hidden="true" tabindex="-1">
-              <option value=""></option>
-              <option value="transformation" data-i18n="prog1Nom">Transformation</option>
-              <option value="force" data-i18n="prog2Nom">Force & Masse</option>
-              <option value="cardio" data-i18n="prog3Nom">Cardio</option>
-              <option value="sur-mesure" data-i18n="prog4Nom">Sur Mesure</option>
-            </select>
-            <div id="program-options">
-              <label class="program-option">
-                <input type="radio" name="program" value="transformation">
-                <span data-i18n="prog1Nom">Transformation</span>
-              </label>
-              <label class="program-option">
-                <input type="radio" name="program" value="force">
-                <span data-i18n="prog2Nom">Force & Masse</span>
-              </label>
-              <label class="program-option">
-                <input type="radio" name="program" value="cardio">
-                <span data-i18n="prog3Nom">Cardio</span>
-              </label>
-              <label class="program-option">
-                <input type="radio" name="program" value="sur-mesure">
-                <span data-i18n="prog4Nom">Sur Mesure</span>
-              </label>
-            </div>
-          </div>
-          <div class="contact-field">
-            <label data-i18n="formMessage">Message</label>
-            <textarea name="message" rows="3" placeholder="Parlez-moi de vos objectifs..."></textarea>
-          </div>
-          <button type="submit" id="contact-submit" data-i18n="formSubmit">Envoyer</button>
-          <div id="formSuccess" style="display:none">Merci ! Samuel vous répondra dans les 48h.</div>
-        </form>
+      <nav class="footer-links" aria-label="Navigation du pied de page">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#objectifs">Objectifs</a>
+        <a href="galerie.html">Galerie</a>
+      </nav>
+      <div class="footer-socials">
+        <a href="https://instagram.com/xzonefitness" aria-label="Instagram" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        </a>
+        <a href="https://facebook.com/xzonefitness" aria-label="Facebook" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1Z"/></svg>
+        </a>
       </div>
     </div>
-  </div>
-
-  <div id="mobile-menu" class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="mobile-menu-header">
-      <span class="mobile-menu-logo">X-ZONE FITNESS</span>
-      <button class="mobile-menu-close" aria-label="Fermer le menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
-    </div>
-
-    <nav class="mobile-menu-links">
-      <a href="index.html" class="mobile-menu-link" data-i18n="navHome">Accueil</a>
-      <a href="index.html#formules" class="mobile-menu-link" data-i18n="navFormules">Formules</a>
-      <a href="index.html#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
-      <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
-      <a href="javascript:void(0)" class="mobile-menu-link" data-mobile-contact data-i18n="navContact">Contact</a>
-    </nav>
-
-    <div class="mobile-menu-lang">
-      <button class="mobile-menu-lang-btn lang-btn active" data-lang="fr">FR</button>
-      <button class="mobile-menu-lang-btn lang-btn" data-lang="en">EN</button>
-    </div>
-  </div>
-
-  <footer id="site-footer" class="box-card">
-    <span id="footer-brand">X-ZONE FITNESS</span>
-    <span id="footer-copy">© <span id="footer-year"></span> — <span data-i18n="footerCopyright">Tous droits réservés.</span></span>
-    <div id="footer-socials">
-      <a href="javascript:void(0)" aria-label="Instagram">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a href="javascript:void(0)" aria-label="TikTok">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>
-      </a>
-      <a href="javascript:void(0)" aria-label="YouTube">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21.8 8s-.2-1.4-.8-2c-.8-.8-1.6-.8-2-.9C16.3 5 12 5 12 5s-4.3 0-7 .1c-.4.1-1.2.1-2 .9-.6.6-.8 2-.8 2S2 9.6 2 11.2v1.5c0 1.6.2 3.2.2 3.2s.2 1.4.8 2c.8.8 1.8.8 2.3.9C6.8 19 12 19 12 19s4.3 0 7-.2c.4-.1 1.2-.1 2-.9.6-.6.8-2 .8-2s.2-1.6.2-3.2v-1.5C22 9.6 21.8 8 21.8 8zM9.7 14.5v-5.5l5.5 2.8-5.5 2.7z"/></svg>
-      </a>
+    <div class="footer-bottom">
+      <span>© <span id="footer-year"></span> X-Zone Fitness</span>
+      <span>Tous droits réservés.</span>
     </div>
   </footer>
 
-  <div id="lang-transition-curtain" class="lang-curtain" aria-hidden="true"></div>
+  <div class="contact-overlay" id="contact-overlay" aria-hidden="true">
+    <div class="contact-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+      <button class="contact-close" id="contact-close" type="button" aria-label="Fermer le formulaire">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <div class="contact-intro">
+        <span class="eyebrow">On fait connaissance ?</span>
+        <h2 id="contact-title">Parle-moi de ton objectif.</h2>
+        <p>Samuel te répond personnellement. Pas de pression, juste une vraie conversation.</p>
+        <div class="contact-details">
+          <a href="mailto:Samcrotv@hotmail.com">Samcrotv@hotmail.com</a>
+          <a href="tel:+14386001894">+1 (438) 600-1894</a>
+        </div>
+      </div>
+      <form id="contactForm" class="contact-form">
+        <label class="contact-field"><span>Ton nom</span><input type="text" name="name" required autocomplete="name" placeholder="Jean Tremblay"></label>
+        <label class="contact-field"><span>Ton courriel</span><input type="email" name="email" required autocomplete="email" placeholder="toi@exemple.com"></label>
+        <label class="contact-field"><span>Ton téléphone <small>(optionnel)</small></span><input type="tel" name="phone" autocomplete="tel" placeholder="+1 (514) 000-0000"></label>
+        <fieldset class="contact-field program-field">
+          <legend>Ton objectif</legend>
+          <select name="program" class="program-proxy" hidden aria-hidden="true" tabindex="-1">
+            <option value=""></option><option value="perte">Perte de poids</option><option value="masse">Prise de masse</option><option value="cardio">Cardio</option><option value="sur-mesure">Sur mesure</option>
+          </select>
+          <div id="program-options" class="program-options">
+            <label><input type="radio" name="program" value="perte"><span>Perte de poids</span></label>
+            <label><input type="radio" name="program" value="masse"><span>Prise de masse</span></label>
+            <label><input type="radio" name="program" value="cardio"><span>Cardio</span></label>
+            <label><input type="radio" name="program" value="sur-mesure"><span>Sur mesure</span></label>
+          </div>
+        </fieldset>
+        <label class="contact-field"><span>Ton message</span><textarea name="message" rows="3" required placeholder="Dis-moi où tu veux aller..."></textarea></label>
+        <button type="submit" id="contact-submit">Envoyer à Samuel</button>
+        <div id="formSuccess" class="form-success" style="display:none">C’est envoyé ! Samuel te répondra rapidement.</div>
+      </form>
+    </div>
+  </div>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/gallery.js"></script>
   <script src="js/contact.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/gallery.js"></script>
 </body>
 </html>

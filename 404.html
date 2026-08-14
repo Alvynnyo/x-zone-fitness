@@ -4,145 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="data:,">
-  <title>Page introuvable — X-Zone Fitness</title>
-  <meta name="description" content="La page demandée est introuvable. Retournez vers X-Zone Fitness.">
+  <title>Page introuvable | X-Zone Fitness</title>
+  <meta name="description" content="Cette page est introuvable. Reviens à l’accueil de X-Zone Fitness.">
   <meta name="robots" content="noindex">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
-  <style>
-    body {
-      min-height: 100vh;
-      background: var(--color-bg);
-      color: var(--color-text);
-    }
-
-    #not-found {
-      min-height: calc(100vh - 96px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 140px 40px 80px;
-      background: transparent;
-    }
-
-    #not-found-inner {
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    #not-found-code {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      color: var(--color-accent);
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-
-    #not-found-title {
-      font-family: var(--font-heading);
-      font-size: clamp(72px, 12vw, 160px);
-      line-height: 0.9;
-      letter-spacing: 0.02em;
-      color: var(--color-text);
-      margin-bottom: 28px;
-    }
-
-    #not-found-text {
-      max-width: 520px;
-      font-size: clamp(16px, 2vw, 20px);
-      line-height: 1.6;
-      color: var(--color-text-secondary);
-      margin-bottom: 36px;
-    }
-
-    #not-found-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 14px 28px;
-      border: 1px solid var(--color-accent);
-      border-radius: 999px;
-      background: var(--color-accent);
-      color: var(--color-white);
-      text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: all 0.2s;
-    }
-
-    #not-found-link:hover {
-      background: var(--color-text);
-      border-color: var(--color-text);
-      color: var(--color-white);
-      transform: translateY(-2px);
-    }
-
-    @media (max-width: 768px) {
-      #not-found {
-        padding: 120px 20px 64px;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
-  <nav id="hero-nav">
-    <a href="index.html" id="hero-logo">X-ZONE FITNESS</a>
-    <ul id="hero-links">
-      <li><a href="index.html#coach" data-i18n="navCoach">Coach</a></li>
-      <li><a href="index.html#videos" data-i18n="navVideos">Vidéos</a></li>
-      <li><a href="galerie.html" data-i18n="navGalerie">Galerie</a></li>
-      <li><a href="index.html#contact-popup" data-i18n="navContact">Contact</a></li>
-    </ul>
-    <button id="hamburger" onclick="toggleMobileMenu()" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a class="brand" href="index.html#accueil">X-Zone Fitness</a>
+      <div class="desktop-nav">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#objectifs">Objectifs</a>
+        <a href="galerie.html">Galerie</a>
+      </div>
+      <a class="not-found-nav-cta" href="index.html#accueil">Retour à l’accueil</a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
-  <div id="mobile-menu" class="mobile-menu-drawer" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="mobile-menu-header">
-      <span class="mobile-menu-logo">X-ZONE FITNESS</span>
-      <button class="mobile-menu-close" aria-label="Fermer le menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"/>
-          <line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-top">
+      <span class="brand">X-Zone Fitness</span>
+      <button class="menu-close" type="button" aria-label="Fermer le menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
     </div>
-
-    <nav class="mobile-menu-links">
-      <a href="index.html" class="mobile-menu-link" data-i18n="navHome">Accueil</a>
-      <a href="index.html#coach" class="mobile-menu-link" data-i18n="navCoach">Coach</a>
-      <a href="index.html#videos" class="mobile-menu-link" data-i18n="navVideos">Vidéos</a>
-      <a href="galerie.html" class="mobile-menu-link" data-i18n="navGalerie">Galerie</a>
-      <a href="index.html#contact-popup" class="mobile-menu-link" data-i18n="navContact">Contact</a>
+    <nav class="mobile-menu-links" aria-label="Navigation mobile">
+      <a href="index.html#accueil">Accueil</a>
+      <a href="index.html#objectifs">Objectifs</a>
+      <a href="galerie.html">Galerie</a>
     </nav>
-
-    <div class="mobile-menu-lang">
-      <button class="mobile-menu-lang-btn lang-btn active" data-lang="fr">FR</button>
-      <button class="mobile-menu-lang-btn lang-btn" data-lang="en">EN</button>
-    </div>
   </div>
 
-  <main id="not-found">
-    <div id="not-found-inner" class="box-card">
-      <div id="not-found-code">Erreur 404</div>
-      <h1 id="not-found-title">Page introuvable</h1>
-      <p id="not-found-text">La page que vous cherchez n'existe pas ou a été déplacée. Retournez à l'accueil pour continuer.</p>
-      <a id="not-found-link" href="index.html">Retour à l'accueil</a>
+  <main class="not-found">
+    <div class="not-found-card">
+      <span class="eyebrow">Erreur 404</span>
+      <h1>Cette page a quitté la zone.</h1>
+      <p>Le lien n’existe plus ou a été déplacé. Reviens à l’accueil pour reprendre ton parcours.</p>
+      <a class="button button-light" href="index.html#accueil">Retour à l’accueil</a>
     </div>
   </main>
 
-  <footer id="site-footer" class="box-card">
-    <span id="footer-brand">X-ZONE FITNESS</span>
-    <span id="footer-copy">© <span id="footer-year"></span> — Tous droits réservés.</span>
+  <footer class="site-footer">
+    <div class="footer-main">
+      <div class="footer-brand"><a class="brand brand-light" href="index.html#accueil">X-Zone Fitness</a><p>Coaching personnel · Montréal</p></div>
+      <nav class="footer-links" aria-label="Navigation du pied de page"><a href="index.html#accueil">Accueil</a><a href="index.html#objectifs">Objectifs</a><a href="galerie.html">Galerie</a></nav>
+    </div>
+    <div class="footer-bottom"><span>© <span id="footer-year"></span> X-Zone Fitness</span><span>Tous droits réservés.</span></div>
   </footer>
 
-  <script src="js/i18n.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

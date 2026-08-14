@@ -1,7 +1,7 @@
 function validateForm(name, email, message) {
-  if (!name.trim()) return 'Le nom est requis.';
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Adresse email invalide.';
-  if (!message.trim()) return 'Le message est requis.';
+  if (!name.trim()) return 'Ajoute ton nom pour continuer.';
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return 'Vérifie ton adresse courriel.';
+  if (!message.trim()) return 'Dis-nous quelques mots sur ton objectif.';
   return null;
 }
 
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!res.ok) {
         // Affiche le message d'erreur réel renvoyé par la Function (ex. 400) plutôt qu'un texte générique.
-        msgEl.textContent = data?.error || 'Une erreur est survenue. Veuillez réessayer ou envoyer un email directement.';
+        msgEl.textContent = data?.error || 'Un problème est survenu. Réessaie ou écris-nous directement.';
         msgEl.className = 'form-message error';
         return;
       }
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       form.reset();
       if (successEl) successEl.style.display = 'block';
     } catch {
-      msgEl.textContent = 'Une erreur est survenue. Veuillez réessayer ou envoyer un email directement.';
+      msgEl.textContent = 'Un problème est survenu. Réessaie ou écris-nous directement.';
       msgEl.className = 'form-message error';
     } finally {
       if (submitBtn) {
