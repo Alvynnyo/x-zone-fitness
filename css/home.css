@@ -1,5 +1,5 @@
 :root {
-  --color-bg: #f4f7f1;
+  --color-bg: #e2ebdd;
   --color-bg-alt: #e2ebdd;
   --color-green-deep: #2a5741;
   --color-cta: #4c8c5f;
@@ -101,7 +101,7 @@ p {
   z-index: 1000;
   width: 100%;
   padding: 12px var(--page-padding);
-  background: rgba(244, 247, 241, 0.94);
+  background: rgba(226, 235, 221, 0.94);
   border-bottom: 1px solid rgba(207, 220, 203, 0.72);
   backdrop-filter: blur(14px);
 }
@@ -349,7 +349,7 @@ p {
 }
 
 .coach-photo img {
-  object-position: 70% 50%;
+  object-position: 50% 50%;
 }
 
 .coach-content {
