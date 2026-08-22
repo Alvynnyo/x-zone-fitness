@@ -19,7 +19,20 @@ function toggleMobileMenu(forceOpen) {
   refreshBodyLock();
 }
 
-function openContactPopup(trigger = document.activeElement) {
+// Pré-sélectionne l'objectif dans le formulaire (select caché + radio visible).
+function preselectProgram(value) {
+  if (!value) return;
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+  const select = form.querySelector('select.program-proxy[name="program"]');
+  if (select) select.value = value;
+  const radio = form.querySelector(`input[type="radio"][name="program"][value="${value}"]`);
+  if (radio) radio.checked = true;
+}
+
+// `objectif` est un 2e paramètre OPTIONNEL : les appels existants openContactPopup(trigger)
+// restent inchangés (aucune présélection). Passer un objectif pré-remplit le formulaire.
+function openContactPopup(trigger = document.activeElement, objectif) {
   const overlay = document.getElementById('contact-overlay');
   if (!overlay) return;
 
@@ -27,6 +40,7 @@ function openContactPopup(trigger = document.activeElement) {
   toggleMobileMenu(false);
   overlay.classList.add('is-open');
   overlay.setAttribute('aria-hidden', 'false');
+  preselectProgram(objectif);
   refreshBodyLock();
   window.requestAnimationFrame(() => document.getElementById('contact-close')?.focus());
 }

@@ -16,6 +16,221 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/home.css">
+  <style>
+    /* --- Hero : barre CTA sticky (mobile uniquement) --- */
+    .hero-sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1500;
+      display: none;
+      padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(13, 26, 15, 0.94);
+      border-top: 1px solid rgba(134, 239, 172, 0.18);
+      transform: translateY(120%);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 0.32s ease, opacity 0.32s ease, visibility 0.32s ease;
+    }
+
+    .hero-sticky-cta-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 52px; /* zone tactile >= 44px */
+      border: 0;
+      border-radius: 999px;
+      font: inherit;
+      font-weight: 700;
+      color: #0d1a0f;
+      background: #22c55e;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .hero-sticky-cta-button:hover,
+    .hero-sticky-cta-button:focus-visible {
+      background: #16a34a;
+    }
+
+    /* La barre n'existe que sur mobile ; sur desktop le CTA du hero reste visible. */
+    @media (max-width: 767px) {
+      .hero-sticky-cta {
+        display: block;
+      }
+
+      .hero-sticky-cta.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+    }
+
+    /* --- Hero : animation d'entrée (tag + titre + copy), désactivée si reduced-motion --- */
+    @media (prefers-reduced-motion: no-preference) {
+      #accueil .hero-copy > * {
+        opacity: 0;
+        transform: translateY(18px);
+        animation: heroEnter 520ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      #accueil .hero-copy > *:nth-child(1) { animation-delay: 60ms; }
+      #accueil .hero-copy > *:nth-child(2) { animation-delay: 140ms; }
+      #accueil .hero-copy > *:nth-child(3) { animation-delay: 220ms; }
+      #accueil .hero-copy > *:nth-child(4) { animation-delay: 300ms; }
+    }
+
+    @keyframes heroEnter {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* --- Bio Samuel : micro-interaction sur les badges --- */
+    .coach-pills span {
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+    .coach-pills span:hover,
+    .coach-pills span:active {
+      transform: scale(1.03);
+      background-color: rgba(134, 239, 172, 0.16); /* #86EFAC faible opacité */
+    }
+
+    /* --- Objectifs : cartes cliquables (curseur, focus clavier, lift) --- */
+    .objective-card {
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .objective-card:hover,
+    .objective-card:active {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(13, 26, 15, 0.22); /* ombre teintée vert foncé #0D1A0F */
+    }
+    .objective-card:focus-visible {
+      outline: 3px solid #22c55e;
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-sticky-cta { transition: none; }
+      .coach-pills span,
+      .objective-card { transition: none; }
+    }
+
+    /* --- Objectifs : ouverture "flip" (clone agrandi au-dessus d'un backdrop) --- */
+    .objective-details { display: none; }
+
+    .objective-backdrop {
+      position: fixed;
+      inset: 0;
+      z-index: 1900;
+      background: #0d1a0f; /* fond imposé */
+      opacity: 0;
+      transition: opacity 0.42s ease;
+    }
+    .objective-backdrop.is-open { opacity: 0.72; }
+
+    .objective-clone {
+      position: fixed;
+      z-index: 2000;
+      perspective: 1400px;
+      transform-origin: center center;
+    }
+    .objective-clone-inner {
+      position: relative;
+      display: grid;
+      width: 100%;
+      transform-origin: center center;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .objective-face {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      grid-area: 1 / 1;
+      padding: 1.6rem;
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-card);
+      background: var(--color-card);
+      box-shadow: 0 24px 60px rgba(13, 26, 15, 0.35);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .objective-face-back { transform: rotateY(180deg); }
+
+    .objective-face-featured {
+      color: var(--color-text-light);
+      background: var(--color-green-deep);
+      border-color: var(--color-green-deep);
+    }
+    .objective-face-featured .objective-icon {
+      color: var(--color-green-deep);
+      background: var(--color-card);
+    }
+    .objective-face h3 {
+      margin-top: 0.9rem;
+      color: var(--color-cta);
+      font-size: 1.4rem;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+    .objective-face p {
+      margin-top: 0.6rem;
+      color: var(--color-text-soft);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .objective-face-featured h3,
+    .objective-face-featured p { color: var(--color-text-light); }
+
+    .objective-details-list {
+      margin: 0.6rem 0 0;
+      padding-left: 1.1rem;
+      display: grid;
+      gap: 0.55rem;
+    }
+    .objective-details-list li {
+      color: var(--color-text-soft);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+    .objective-face-featured .objective-details-list li { color: var(--color-text-light); }
+
+    .objective-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 44px;   /* zone tactile >= 44px */
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(13, 26, 15, 0.08);
+      color: inherit;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .objective-face-featured .objective-close { background: rgba(247, 250, 245, 0.16); }
+    .objective-close svg {
+      width: 22px; height: 22px;
+      fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round;
+    }
+    .objective-close:focus-visible { outline: 3px solid #22c55e; outline-offset: 2px; }
+
+    /* Transition du flip : uniquement si l'utilisateur l'autorise */
+    @media (prefers-reduced-motion: no-preference) {
+      .objective-clone-inner {
+        transition: transform 0.46s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -94,8 +309,7 @@
 
           <div class="coach-pills" aria-label="Certifications et expertises">
             <span>Certifié CANFIT PRO</span>
-            <span>Nutrition sportive</span>
-            <span class="coach-pill-desktop">Coaching en ligne</span>
+            <span>Coaching en ligne</span>
           </div>
         </div>
       </div>
@@ -110,36 +324,68 @@
         </header>
 
         <div class="objectives-grid">
-          <article class="objective-card">
+          <article class="objective-card" role="button" tabindex="0" data-objectif="perte" aria-label="Perte de poids — voir le détail du programme">
             <span class="objective-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 21c4-3.2 7-7 7-12a7 7 0 0 0-14 0c0 5 3 8.8 7 12Z"/><path d="M9 9h6M12 6v6"/></svg>
             </span>
             <h3>Perte de poids</h3>
             <p>Retrouve ton énergie avec une méthode progressive et réaliste.</p>
+            <div class="objective-details" hidden>
+              <ul>
+                <li>Bilan de départ : habitudes, contraintes, historique</li>
+                <li>Plan d’entraînement progressif, adapté à ton rythme</li>
+                <li>Suivi de ta progression semaine après semaine</li>
+                <li>Ajustements réguliers selon tes résultats</li>
+              </ul>
+            </div>
           </article>
 
-          <article class="objective-card">
+          <article class="objective-card" role="button" tabindex="0" data-objectif="masse" aria-label="Prise de masse — voir le détail du programme">
             <span class="objective-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10"/></svg>
             </span>
             <h3>Prise de masse</h3>
             <p>Construis du muscle avec un plan clair et une progression suivie.</p>
+            <div class="objective-details" hidden>
+              <ul>
+                <li>Programme structuré, adapté à ton niveau</li>
+                <li>Suivi des charges et de la progression</li>
+                <li>Suivi rapproché pour ajuster l’intensité au fil du temps</li>
+                <li>Ajustements selon ta récupération</li>
+              </ul>
+            </div>
           </article>
 
-          <article class="objective-card">
+          <article class="objective-card" role="button" tabindex="0" data-objectif="cardio" aria-label="Cardio — voir le détail du programme">
             <span class="objective-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg>
             </span>
             <h3>Cardio</h3>
             <p>Améliore ton souffle, ton endurance et ton niveau d’énergie.</p>
+            <div class="objective-details" hidden>
+              <ul>
+                <li>Travail progressif de l’endurance (intervalles, continu, mixte)</li>
+                <li>Adapté à ton point de départ, sans surenchère</li>
+                <li>Suivi de ta récupération</li>
+                <li>Objectif : plus de souffle, plus d’énergie au quotidien</li>
+              </ul>
+            </div>
           </article>
 
-          <article class="objective-card objective-card-featured">
+          <article class="objective-card objective-card-featured" role="button" tabindex="0" data-objectif="sur-mesure" aria-label="Objectif sur mesure — voir le détail">
             <span class="objective-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18"/><circle cx="12" cy="12" r="8"/></svg>
             </span>
             <h3>Sur mesure</h3>
             <p>Un objectif différent ? On crée ensemble le plan qui te ressemble.</p>
+            <div class="objective-details" hidden>
+              <ul>
+                <li>Un premier échange pour cerner ton objectif précis</li>
+                <li>Un plan construit spécifiquement pour toi</li>
+                <li>Possibilité de combiner plusieurs axes (ex. perte de poids + cardio)</li>
+                <li>En présentiel ou en ligne, selon ta préférence</li>
+              </ul>
+            </div>
           </article>
         </div>
       </div>
@@ -240,7 +486,266 @@
     </div>
   </div>
 
+  <!-- Barre CTA sticky mobile : réutilise le modal contact via data-contact-trigger (home.js) -->
+  <div class="hero-sticky-cta" id="hero-sticky-cta" aria-hidden="true">
+    <button class="hero-sticky-cta-button" type="button" data-contact-trigger>Prendre rendez-vous</button>
+  </div>
+
   <script src="js/contact.js"></script>
   <script src="js/home.js"></script>
+  <script>
+    (function () {
+      var heroCta = document.querySelector('#accueil .button-light');
+      var bar = document.getElementById('hero-sticky-cta');
+      if (!heroCta || !bar) return;
+
+      // Fallback si IntersectionObserver indisponible : on affiche la barre.
+      if (!('IntersectionObserver' in window)) {
+        bar.classList.add('is-visible');
+        bar.setAttribute('aria-hidden', 'false');
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          // Visible seulement quand le CTA du hero n'est plus à l'écran.
+          var pastHeroCta = !entry.isIntersecting;
+          bar.classList.toggle('is-visible', pastHeroCta);
+          bar.setAttribute('aria-hidden', String(!pastHeroCta));
+        });
+      }, { threshold: 0 });
+
+      observer.observe(heroCta);
+    })();
+
+    /* Bio Samuel : compteurs animés (une seule fois quand la section entre dans le viewport) */
+    (function () {
+      var statsSection = document.querySelector('.coach-stats');
+      if (!statsSection) return;
+      var stats = Array.prototype.slice.call(statsSection.querySelectorAll('.stat-card strong')).map(function (el) {
+        var m = el.textContent.trim().match(/^(\d+)(.*)$/);
+        return { el: el, target: m ? parseInt(m[1], 10) : 0, suffix: m ? m[2] : '' };
+      });
+      if (!stats.length) return;
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // reduced-motion (ou pas d'IntersectionObserver) : on garde la valeur finale, sans animation.
+      if (reduce || !('IntersectionObserver' in window)) return;
+
+      // En attendant le scroll-in, on repart de 0 (le "+"/"%" reste affiché).
+      stats.forEach(function (s) { s.el.textContent = '0' + s.suffix; });
+
+      function animate() {
+        var duration = 1400;
+        stats.forEach(function (s) {
+          var start = null;
+          (function step(ts) {
+            if (start === null) start = ts;
+            var p = Math.min((ts - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - p, 3); // ease-out
+            s.el.textContent = Math.round(eased * s.target) + s.suffix;
+            if (p < 1) requestAnimationFrame(step);
+            else s.el.textContent = s.target + s.suffix;
+          })(performance.now());
+        });
+      }
+
+      var io = new IntersectionObserver(function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          animate();
+          obs.disconnect(); // une seule fois
+        });
+      }, { threshold: 0.4 });
+      io.observe(statsSection);
+    })();
+
+    /* Objectifs : chaque carte s'ouvre en "flip" agrandi (clone animé au-dessus d'un backdrop).
+       N'ouvre JAMAIS le formulaire de contact. Fermeture via X, backdrop ou Escape. */
+    (function () {
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.objective-card[data-objectif]'));
+      if (!cards.length) return;
+
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var DURATION = 460;
+      var state = null; // { card, backdrop, clone, inner, closeBtn, onKey }
+
+      function buildFront(card, featured) {
+        var front = document.createElement('div');
+        front.className = 'objective-face objective-face-front' + (featured ? ' objective-face-featured' : '');
+        Array.prototype.forEach.call(card.children, function (ch) {
+          if (ch.classList && ch.classList.contains('objective-details')) return;
+          front.appendChild(ch.cloneNode(true));
+        });
+        return front;
+      }
+
+      function buildBack(card, featured) {
+        var back = document.createElement('div');
+        back.className = 'objective-face objective-face-back' + (featured ? ' objective-face-featured' : '');
+
+        var close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'objective-close';
+        close.setAttribute('aria-label', 'Fermer');
+        close.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>';
+        back.appendChild(close);
+
+        var title = card.querySelector('h3');
+        if (title) {
+          var h = document.createElement('h3');
+          h.textContent = title.textContent;
+          back.appendChild(h);
+        }
+        var details = card.querySelector('.objective-details');
+        if (details) {
+          var ul = document.createElement('ul');
+          ul.className = 'objective-details-list';
+          Array.prototype.forEach.call(details.querySelectorAll('li'), function (li) {
+            var n = document.createElement('li');
+            n.textContent = li.textContent;
+            ul.appendChild(n);
+          });
+          back.appendChild(ul);
+        }
+        return { back: back, close: close };
+      }
+
+      function open(card) {
+        if (state) return;
+
+        var featured = card.classList.contains('objective-card-featured');
+        var srcRect = card.getBoundingClientRect();
+
+        var backdrop = document.createElement('div');
+        backdrop.className = 'objective-backdrop';
+
+        var clone = document.createElement('div');
+        clone.className = 'objective-clone';
+        clone.setAttribute('role', 'dialog');
+        clone.setAttribute('aria-modal', 'true');
+        var titleEl = card.querySelector('h3');
+        clone.setAttribute('aria-label', (titleEl ? titleEl.textContent : 'Objectif') + ' — détails');
+
+        var inner = document.createElement('div');
+        inner.className = 'objective-clone-inner';
+        var b = buildBack(card, featured);
+        inner.appendChild(buildFront(card, featured));
+        inner.appendChild(b.back);
+        clone.appendChild(inner);
+
+        document.body.appendChild(backdrop);
+        document.body.appendChild(clone);
+        document.body.classList.add('is-locked');
+
+        // Largeur finale : ~90vw sur mobile, plafonnée à 480px sur desktop.
+        var finalW = Math.min(window.innerWidth * 0.92, 480);
+        clone.style.width = finalW + 'px';
+        clone.style.left = '0px';
+        clone.style.top = '0px';
+
+        // Mesure de la hauteur naturelle une fois posée, puis centrage.
+        var finalH = clone.getBoundingClientRect().height;
+        var finalLeft = Math.max(12, (window.innerWidth - finalW) / 2);
+        var finalTop = Math.max(12, (window.innerHeight - finalH) / 2);
+        clone.style.left = finalLeft + 'px';
+        clone.style.top = finalTop + 'px';
+
+        // La carte source garde sa place dans la grille (pas de reflow).
+        card.style.visibility = 'hidden';
+
+        state = { card: card, backdrop: backdrop, clone: clone, inner: inner, closeBtn: b.close };
+
+        if (reduce) {
+          // Pas de translate/scale/rotate animés : affichage direct (dos visible) + simple fondu.
+          inner.style.transition = 'none';
+          inner.style.transform = 'rotateY(180deg)';
+          clone.style.opacity = '0';
+          clone.style.transition = 'opacity 0.18s linear';
+          void clone.offsetWidth;
+          backdrop.classList.add('is-open');
+          clone.style.opacity = '1';
+        } else {
+          // FLIP : on part visuellement de la position/taille exactes de la carte source.
+          var dx = (srcRect.left + srcRect.width / 2) - (finalLeft + finalW / 2);
+          var dy = (srcRect.top + srcRect.height / 2) - (finalTop + finalH / 2);
+          var sx = srcRect.width / finalW;
+          var sy = srcRect.height / finalH;
+          inner.style.transition = 'none';
+          inner.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ') rotateY(0deg)';
+          void clone.offsetWidth;
+          backdrop.classList.add('is-open');
+          inner.style.transition = 'transform ' + DURATION + 'ms cubic-bezier(0.22, 1, 0.36, 1)';
+          inner.style.transform = 'translate(0px,0px) scale(1,1) rotateY(180deg)';
+        }
+
+        window.requestAnimationFrame(function () { b.close.focus(); });
+        b.close.addEventListener('click', close);
+        backdrop.addEventListener('click', close);
+
+        // Escape ferme ; Tab reste piégé dans la carte (seul le bouton X est focusable).
+        state.onKey = function (e) {
+          if (e.key === 'Escape') { e.preventDefault(); close(); return; }
+          if (e.key === 'Tab') { e.preventDefault(); b.close.focus(); }
+        };
+        document.addEventListener('keydown', state.onKey);
+      }
+
+      function close() {
+        if (!state) return;
+        var s = state;
+        state = null;
+        document.removeEventListener('keydown', s.onKey);
+
+        function cleanup() {
+          if (s.clone.parentNode) s.clone.parentNode.removeChild(s.clone);
+          if (s.backdrop.parentNode) s.backdrop.parentNode.removeChild(s.backdrop);
+          document.body.classList.remove('is-locked');
+          s.card.style.visibility = '';
+          s.card.focus(); // focus restauré sur la carte d'origine
+        }
+
+        s.backdrop.classList.remove('is-open');
+
+        if (reduce) {
+          s.clone.style.opacity = '0';
+          window.setTimeout(cleanup, 180);
+          return;
+        }
+
+        // Animation inverse : flip retour + rétrécissement vers la position d'origine.
+        var srcRect = s.card.getBoundingClientRect();
+        var cr = s.clone.getBoundingClientRect();
+        var finalW = cr.width, finalH = cr.height;
+        var dx = (srcRect.left + srcRect.width / 2) - (cr.left + finalW / 2);
+        var dy = (srcRect.top + srcRect.height / 2) - (cr.top + finalH / 2);
+        var sx = srcRect.width / finalW;
+        var sy = srcRect.height / finalH;
+
+        var done = false;
+        function onEnd() {
+          if (done) return;
+          done = true;
+          s.inner.removeEventListener('transitionend', onEnd);
+          cleanup();
+        }
+        s.inner.addEventListener('transitionend', onEnd);
+        window.setTimeout(onEnd, DURATION + 120); // filet de sécurité
+
+        void s.clone.offsetWidth;
+        s.inner.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(' + sx + ',' + sy + ') rotateY(0deg)';
+      }
+
+      cards.forEach(function (card) {
+        card.addEventListener('click', function () { open(card); });
+        card.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault(); // Espace ne doit pas scroller
+            open(card);
+          }
+        });
+      });
+    })();
+  </script>
 </body>
 </html>
