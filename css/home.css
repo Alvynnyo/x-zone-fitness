@@ -838,6 +838,82 @@ p {
   background: var(--color-bg-alt);
 }
 
+/* --- Contact : état de confirmation animé (succès d'envoi) --- */
+.contact-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  padding: 1.5rem 0.5rem 0.5rem;
+}
+.contact-confirm[hidden] { display: none; }
+
+.contact-confirm-icon {
+  display: grid;
+  place-items: center;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  background: rgba(134, 239, 172, 0.18); /* halo vert clair #86EFAC, faible opacité */
+}
+.confirm-check {
+  width: 58px;
+  height: 58px;
+}
+.confirm-check-circle,
+.confirm-check-mark {
+  fill: none;
+  stroke: #22c55e; /* vert accent imposé */
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.confirm-check-circle { stroke-width: 2.5; }
+.confirm-check-mark { stroke-width: 4; }
+
+.contact-confirm-text h2 {
+  margin: 0;
+  color: var(--color-green-deep);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.contact-confirm-text p {
+  margin: 0.4rem 0 0;
+  color: var(--color-text-soft);
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+/* Animations "draw-in" + fade/slide : uniquement si l'utilisateur les autorise.
+   (Les propriétés qui masquent le contenu — dashoffset, opacity:0 — sont confinées
+   ici, donc en reduced-motion la coche et le texte restent visibles d'emblée.) */
+@media (prefers-reduced-motion: no-preference) {
+  .confirm-check-circle {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: confirmDraw 500ms ease-out forwards;
+  }
+  .confirm-check-mark {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: confirmDraw 400ms ease-out 250ms forwards;
+  }
+  .contact-confirm-text {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: confirmRise 450ms ease-out 300ms forwards;
+  }
+}
+@keyframes confirmDraw { to { stroke-dashoffset: 0; } }
+@keyframes confirmRise { to { opacity: 1; transform: translateY(0); } }
+
+/* Reduced-motion : coche complète d'emblée + simple fondu, contenu jamais caché. */
+@media (prefers-reduced-motion: reduce) {
+  .contact-confirm { animation: confirmFade 220ms ease-out; }
+}
+@keyframes confirmFade { from { opacity: 0; } to { opacity: 1; } }
+
 .gallery-main {
   padding-top: 76px;
   background: var(--color-bg);
